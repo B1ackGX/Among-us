@@ -18,8 +18,9 @@ module.exports = {
         if(queue.songs[1]) string += `\n__Up Next:__\n ${queue.songs.map((song, id) => `\`${id}.\` [${song.name}](${song.url})\n \`${song.formattedDuration} Requested by: ${song.user.tag}\``).slice(1, 10).join("\n")}`
 
         const embed = new Discord.MessageEmbed()
-            .setTitle(`**Queue for ${message.guild}**`)
-            .setDescription(string);
+        .setTitle(`**Queue for ${message.guild}**`)
+        .setDescription(string)
+        .setColor('RED')
         return message.channel.send(embed)
     }
 }
