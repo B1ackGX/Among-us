@@ -9,7 +9,7 @@ module.exports = {
         if (!queue) return message.channel.send(new Discord.MessageEmbed()
         .setTitle(`**Queue for ${message.guild}**`)
         .setDescription(`__Now Playing:__\nNothing Playing!`)
-        .setColor('RED')
+        .setColor('RANDOM')
         );
        
         let string = "";
@@ -20,7 +20,7 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
         .setTitle(`**Queue for ${message.guild}**`)
         .setDescription(string)
-        .setColor('RED')
+        .setColor('RANDOM')
         .addField("\u200B", `**${queue.songs.length} songs in queue | ${queue.formattedDuration} total length**`)
         return message.channel.send(embed)
     }
