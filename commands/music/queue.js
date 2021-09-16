@@ -21,8 +21,7 @@ module.exports = {
         .setTitle(`**Queue for ${message.guild}**`)
         .setDescription(string)
         .setColor('RED')
-        .addField("\u200B", `**${queue.length} songs in queue | ${queue.formattedDuration} total length**`)
-        .setFooter(message.author.displayAvatarURL)
+        .addField("\u200B", `**${queue.songs.length} songs in queue | ${queue.formattedDuration} total length**`)
         return message.channel.send(embed)
     }
 }
