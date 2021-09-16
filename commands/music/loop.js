@@ -7,11 +7,11 @@ module.exports = {
     run: async (client, message, args) => {
         const queue = client.distube.getQueue(message)
         if (!queue) return message.channel.send(`**There is nothing playing!**`)
-        if(client.distube.setRepeatMode(message, 2)){
+        if(queue.repeatMode = 2){
             client.distube.setRepeatMode(message, 1)
             message.channel.send('🔂 **Loop Enabled**')
         }
-        if(client.distube.setRepeatMode(message, 0)){
+        if(queue.repeatMode = 0){
             client.distube.setRepeatMode(message, 1)
             message.channel.send('🔂 **Loop Enabled**')
         }
