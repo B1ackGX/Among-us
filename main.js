@@ -1,0 +1,73 @@
+const DisTube = require("distube")
+const { Client, Collection } = require("discord.js");
+const { config } = require("dotenv");
+const {prefix, token } = require("./config.json")
+const client = new Client({
+    disableEveryone: true
+})
+const distube = new DisTube(client, { searchSongs: false, emitNewSongOnly: true})
+client.distube = distube;
+// Collections
+client.commands = new Collection();
+client.aliases = new Collection();
+
+// Run the command loader
+["command"].forEach(handler => {
+    require(`./handlers/${handler}`)(client);
+});
+
+client.on("ready", () => {
+    console.log(`AMONG US!`);
+
+    client.user.setActivity(`AMONG US!`) 
+})
+
+client.on('guildMemberAdd', member => {
+    member.send('**' + member.user.username + '** Welcome to the server!');
+});
+
+client.on("message", async message => {
+   
+
+    if (message.author.bot) return;
+    if (!message.guild) return;
+    if (!message.content.startsWith(prefix)) return;
+
+    // If message.member is uncached, cache it.
+    if (!message.member) message.member = await message.guild.fetchMember(message);
+
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const cmd = args.shift().toLowerCase();
+    
+    if (cmd.length === 0) return;
+    
+    // Get the command
+    let command = client.commands.get(cmd);
+    // If none is found, try to find it by alias
+    if (!command) command = client.commands.get(client.aliases.get(cmd));
+
+    // If a command is finally found, run the command
+    if (command) 
+        command.run(client, message, args);
+});
+    client.distube
+    .on("playSong", (message, queue, song) => message.channel.send(
+        `Playing \`${song.name}\` - \`${song.formattedDuration}\`\nRequested by: ${song.user.tag}`
+    ))
+    .on("addSong", (message, queue, song) => message.channel.send(
+        `Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user.tag}`
+    ))
+    .on("playList", (message, queue, playlist, song) => message.channel.send(
+        `Play \`${playlist.name}\` playlist (${playlist.songs.length} songs).\nRequested by: ${song.user.tag}\nNow playing \`${song.name}\` - \`${song.formattedDuration}\}`
+    ))
+    .on("addList", (message, queue, playlist) => message.channel.send(
+        `Added \`${playlist.name}\` playlist (${playlist.songs.length} songs) to queue\n${status(queue)}`
+    ))
+    .on("initQueue", queue => {
+        queue.autoplay = false;
+    })
+    .on("error", (message, e) => {
+        console.error(e)
+        message.channel.send("An error encountered: " + e);
+    });
+client.login(process.env.token);
