@@ -8,7 +8,7 @@ module.exports = {
         const queue = client.distube.getQueue(message)
         if (!queue) return message.channel.send(new Discord.MessageEmbed()
         .setTitle(`**Queue for ${message.guild}**`)
-        .addField(`__Now Playing:__\nNothing Playing!`)
+        .setDescription(`__Now Playing:__\nNothing Playing!`)
         );
        
         let string = "";
@@ -18,7 +18,7 @@ module.exports = {
 
         const embed = new Discord.MessageEmbed()
             .setTitle(`**Queue for ${message.guild}**`)
-            .addField(string);
+            .setDescription(string);
         return message.channel.send(embed)
     }
 }
