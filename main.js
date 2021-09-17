@@ -50,21 +50,21 @@ client.on("message", async message => {
     if (command) 
         command.run(client, message, args);
 });
+
+const embed = Discord.MessageEmbed()
+    .addDescription('**Added to queue')
+    .addField(`[${song.name}](${song.url})`)
+    .addFields(
+    { name: '**Channel**', value: `${song.channel.name}`},
+    { name: '**Song Duration**', value: `${song.formattedDuration}`},
+    { name: '**Estimated Time Until Playing**', value: `${queue.formattedDuration}`},
+    { name: '**Position in Queue**', value: `${queue.songs.length + 1}`}
+)
     client.distube
     .on("playSong", (message, queue, song) => message.channel.send(
         `**Playing**:notes: \`${song.name}\` - Now! `
     ))
-    .on("addSong", (message, queue, song) => message.channel.send(
-        new Discord.MessageEmbed()
-            .addDescription('**Added to queue')
-            .addField(`[${song.name}](${song.url})`)
-            .addFields(
-                { name: '**Channel**', value: `${song.channel.name}`},
-                { name: '**Song Duration**', value: `${song.formattedDuration}`},
-                { name: '**Estimated Time Until Playing**', value: `${queue.formattedDuration}`},
-                { name: '**Position in Queue**', value: `${queue.songs.length + 1}`}
-            )
-    ))
+    .on("addSong", (message, queue, song) => message.channel.send(embed))
     .on("playList", (message, queue, playlist, song) => message.channel.send(
         `Play \`${playlist.name}\` playlist (${playlist.songs.length} songs).\nRequested by: ${song.user.tag}\nNow playing \`${song.name}\` - \`${song.formattedDuration}\}`
     ))
