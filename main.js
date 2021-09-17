@@ -1,13 +1,12 @@
-const DisTube = require("distube");
-const { SpotifyPlugin } = require("@distube/spotify");
-const Discord = require('discord.js');
+const DisTube = require("distube")
+const Discord = require('discord.js')
 const { Client, Collection} = require("discord.js");
 const { config } = require("dotenv");
 const {prefix, token } = require("./config.json")
 const client = new Client({
     disableEveryone: true
 })
-const distube = new DisTube(client, { searchSongs: false, emitNewSongOnly: true, plugins: [new SpotifyPlugin()]})
+const distube = new DisTube(client, { searchSongs: false, emitNewSongOnly: true})
 client.distube = distube;
 // Collections
 client.commands = new Collection();
@@ -53,7 +52,6 @@ client.on("message", async message => {
         command.run(client, message, args);
 });
 
-
     client.distube
     .on("playSong", (message, queue, song) => message.channel.send(
         `**Playing**:notes: \`${song.name}\` - Now! `
@@ -71,7 +69,7 @@ client.on("message", async message => {
         `Play \`${playlist.name}\` playlist (${playlist.songs.length} songs).\nRequested by: ${song.user.tag}\nNow playing \`${song.name}\` - \`${song.formattedDuration}\}`
     ))
     .on("addList", (message, queue, playlist) => message.channel.send(
-        `Added \`${playlist.name}\` playlist (${playlist.songs.length} songs) to queue\n${queue}`
+        `Added \`${playlist.name}\` playlist (${playlist.songs.length} songs) to queue\n${status(queue)}`
     ))
     .on("initQueue", queue => {
         queue.autoplay = false;
