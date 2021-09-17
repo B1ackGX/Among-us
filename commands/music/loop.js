@@ -15,15 +15,15 @@ module.exports = {
         if (!queue) {
             return message.channel.send(`**There is nothing playing!**`)
         }
-        if(queue.repeatMode = 2){
+        if(queue.repeatMode == 2){
             client.distube.setRepeatMode(message, 1)
             return message.channel.send('🔂 **Loop Enabled**')
         }
-        if(queue.repeatMode = 1){
+        if(queue.repeatMode == 1){
             client.distube.setRepeatMode(message, 0)
             return message.channel.send('❌ **Disabled Loop**')
         }
-        if(queue.repeatMode = 0){
+        if(queue.repeatMode == 0){
             client.distube.setRepeatMode(message, 1)
             return message.channel.send('🔂 **Loop Enabled**')
         }
