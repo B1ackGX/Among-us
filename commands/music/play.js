@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const { prefix } = require('../../config.json');
 const spotifyToYT = require("spotify-to-yt")
+const {Spotify, YouTube} = require("./emoji.json")
 
 module.exports = {
     name: "play",
@@ -19,6 +20,9 @@ module.exports = {
                     .setTitle("❌ **You didn't provide a song!**")
                     .setDescription(`Usage: \`${prefix}play <Song>\``)    
                 );
+            if (music.toLowerCase().includes("spotify")){
+                message.channel.send(`${Spotify} **Searching** 🎵 \`${music}\``);
+            }
             message.channel.send(`🔎 **Searching** 🎵 \`${music}\``);
             if (music.toLowerCase().includes("spotify") && music.toLowerCase().includes("track")){
                 const result = await spotifyToYT.trackGet(music)
