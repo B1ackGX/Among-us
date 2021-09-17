@@ -51,7 +51,6 @@ client.on("message", async message => {
     if (command) 
         command.run(client, message, args);
 });
-const status = (queue) => `Volume: \`${queue.volume}%\` | Filter: \`${queue.filter || "Off"}\` | Loop: \`${queue.repeatMode ? queue.repeatMode == 2 ? "All Queue" : "This Song" : "Off"}\` | Autoplay: \`${queue.autoplay ? "On" : "Off"}\``;
 
     client.distube
     .on("playSong", (message, queue, song) => message.channel.send(
@@ -62,15 +61,23 @@ const status = (queue) => `Volume: \`${queue.volume}%\` | Filter: \`${queue.filt
     .setDescription(`[${song.name}](${song.url})`)
     .setThumbnail(`${song.thumbnail}`)
     .addFields(
+    { name: '**Channel**', value: `${song.uploader}`, inline: true},
     { name: '**Song Duration**', value: `${song.formattedDuration}`, inline: true},
     { name: '**Estimated Time Until Playing**', value: `${queue.formattedDuration}`, inline: true},
-    { name: '**Position in Queue**', value: `${queue.songs.length - 1}`, inline: true})
+    { name: '**Position in Queue**', value: `${queue.songs.length - 1}`})
     ))
     .on("playList", (message, queue, playlist, song) => message.channel.send(
         `Play \`${playlist.name}\` playlist (${playlist.songs.length} songs).\nRequested by: ${song.user.tag}\nNow playing \`${song.name}\` - \`${song.formattedDuration}\}`
     ))
-    .on("addList", (message, queue, playlist) => message.channel.send(
-        `Added \`${playlist.name}\` playlist (${playlist.songs.length} songs) to queue\n${status(queue)}`
+    .on("addList", (message, queue, playlist) => message.channel.send(new Discord.MessageEmbed()
+    .setTitle('**Playlist added to queue**')
+    .setDescription(`${playlist.name}`)
+    .setThumbnail(`${playlist.thumbnail}`)
+    .addFields(
+    { name: '**Estimated Time until playing**', value: `${queue.formattedDuration}`},
+    { name: '**Position in queue**', value: `${queue.song.length -1 }`, inline: true},
+    { name: '**Enqueued**', value: `\`${playlist.songs.length}\` songs`}
+    )
     ))
     .on("initQueue", queue => {
         queue.autoplay = false;
