@@ -17,7 +17,7 @@ module.exports = {
         }
         if(queue.repeatMode = 1){
             client.distube.setRepeatMode(message, 2)
-            return message.channels.sned('🔄 **Queue Loop Enabled**')
+            return message.channels.send('🔄 **Queue Loop Enabled**')
         }
         if(queue.repeatMode = 0){
             client.distube.setRepeatMode(message, 2)
