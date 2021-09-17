@@ -52,10 +52,18 @@ client.on("message", async message => {
 });
     client.distube
     .on("playSong", (message, queue, song) => message.channel.send(
-        `Playing \`${song.name}\` - \`${song.formattedDuration}\`\nRequested by: ${song.user.tag}`
+        `**Playing**:notes: \`${song.name}\` - Now! `
     ))
     .on("addSong", (message, queue, song) => message.channel.send(
-        `Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user.tag}`
+        new Discord.MessageEmbed()
+            .addDescription('**Added to queue')
+            .addField(`[${song.name}](${song.url})`)
+            .addFields(
+                { name: '**Channel**', value: `${song.channel.name}`},
+                { name: '**Song Duration**', value: `${song.formattedDuration}`},
+                { name: '**Estimated Time Until Playing**', value: `${queue.formattedDuration}`},
+                { name: '**Position in Queue**', value: `${queue.songs.length + 1}`}
+            )
     ))
     .on("playList", (message, queue, playlist, song) => message.channel.send(
         `Play \`${playlist.name}\` playlist (${playlist.songs.length} songs).\nRequested by: ${song.user.tag}\nNow playing \`${song.name}\` - \`${song.formattedDuration}\}`
