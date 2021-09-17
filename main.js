@@ -1,5 +1,5 @@
 const DisTube = require("distube")
-const { Client, Collection } = require("discord.js");
+const { Client, Collection, Discord} = require("discord.js");
 const { config } = require("dotenv");
 const {prefix, token } = require("./config.json")
 const client = new Client({
