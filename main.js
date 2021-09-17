@@ -53,7 +53,7 @@ client.on("message", async message => {
 });
 
 const embed = new Discord.MessageEmbed()
-    .addDescription('**Added to queue')
+    .setDescription('**Added to queue')
     .addField(`[${song.name}](${song.url})`)
     .addFields(
     { name: '**Channel**', value: `${song.channel.name}`},
