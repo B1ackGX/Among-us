@@ -1,5 +1,5 @@
 const DisTube = require("distube")
-const { Client, Collection, Discord} = require("discord.js");
+const { Client, Collection} = require("discord.js");
 const { config } = require("dotenv");
 const {prefix, token } = require("./config.json")
 const client = new Client({
@@ -51,7 +51,7 @@ client.on("message", async message => {
         command.run(client, message, args);
 });
 
-const embed = Discord.MessageEmbed()
+const embed = Client.MessageEmbed()
     .addDescription('**Added to queue')
     .addField(`[${song.name}](${song.url})`)
     .addFields(
