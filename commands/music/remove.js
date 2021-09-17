@@ -31,7 +31,7 @@ module.exports = {
                 .setColor('RED')
             )
         }else {
-            queue.splice(queueN)
+            queue.songs.splice(queueN -1, 1);
             return message.channel.send(`✔️ **Removed** \`${queue.songs[queueN].name}\``)
         }
     }
