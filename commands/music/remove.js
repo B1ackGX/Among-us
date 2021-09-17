@@ -31,8 +31,8 @@ module.exports = {
                 .setColor('RED')
             )
         }else {
-            queue.songs.splice(queueN, 1);
-            return message.channel.send(`✔️ **Removed** \`${queue.songs[queueN].name}\``)
+            message.channel.send(`✔️ **Removed** \`${queue.songs[queueN].name}\``)
+            return queue.songs.splice(queueN, 1);
         }
     }
 }
