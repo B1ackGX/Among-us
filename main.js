@@ -60,9 +60,9 @@ client.on("message", async message => {
     .setDescription('**Added to queue**')
     .addField("\u200B" `[${song.name}](${song.url})`)
     .addFields(
-    { name: '**Song Duration**', value: `${song.formattedDuration}`},
-    { name: '**Estimated Time Until Playing**', value: `${queue.formattedDuration}`},
-    { name: '**Position in Queue**', value: `${queue.songs.length - 1}`})
+    { name: '**Song Duration**', value: `${song.formattedDuration}`, inline: true},
+    { name: '**Estimated Time Until Playing**', value: `${queue.formattedDuration}`, inline: true},
+    { name: '**Position in Queue**', value: `${queue.songs.length - 1}`, inline: true})
     ))
     .on("playList", (message, queue, playlist, song) => message.channel.send(
         `Play \`${playlist.name}\` playlist (${playlist.songs.length} songs).\nRequested by: ${song.user.tag}\nNow playing \`${song.name}\` - \`${song.formattedDuration}\}`
