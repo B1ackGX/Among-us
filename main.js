@@ -57,13 +57,13 @@ client.on("message", async message => {
         `**Playing**:notes: \`${song.name}\` - Now! `
     ))
     .on("addSong", (message, queue, song) => message.channel.send(new Discord.MessageEmbed()
-    .setDescription('**Added to queue')
-    .addField(`[${song.name}](${song.url})`)
+    .setDescription('**Added to queue**')
+    .addField("\u200B" `[${song.name}](${song.url})`)
     .addFields(
     { name: '**Channel**', value: `${song.channel}`},
     { name: '**Song Duration**', value: `${song.formattedDuration}`},
     { name: '**Estimated Time Until Playing**', value: `${queue.formattedDuration}`},
-    { name: '**Position in Queue**', value: `${queue.songs.length + 1}`})
+    { name: '**Position in Queue**', value: `${queue.songs.length - 1}`})
     ))
     .on("playList", (message, queue, playlist, song) => message.channel.send(
         `Play \`${playlist.name}\` playlist (${playlist.songs.length} songs).\nRequested by: ${song.user.tag}\nNow playing \`${song.name}\` - \`${song.formattedDuration}\}`
