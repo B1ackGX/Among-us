@@ -1,4 +1,5 @@
 const DisTube = require("distube")
+const { SpotifyPlugin } = require("@distube/spotify");
 const Discord = require('discord.js')
 const { Client, Collection} = require("discord.js");
 const { config } = require("dotenv");
