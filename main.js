@@ -52,7 +52,7 @@ client.on("message", async message => {
         command.run(client, message, args);
 });
 
-const embed = Discord.MessageEmbed()
+const embed = new Discord.MessageEmbed()
     .addDescription('**Added to queue')
     .addField(`[${song.name}](${song.url})`)
     .addFields(
