@@ -6,7 +6,7 @@ const {prefix, token } = require("./config.json")
 const client = new Client({
     disableEveryone: true
 })
-const distube = new DisTube(client, { searchSongs: false, emitNewSongOnly: true})
+const distube = new DisTube(client, { searchSongs: false, emitNewSongOnly: true, plugins: [new SpotifyPlugin()]})
 client.distube = distube;
 // Collections
 client.commands = new Collection();
