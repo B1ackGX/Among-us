@@ -71,7 +71,7 @@ client.on("message", async message => {
         `Play \`${playlist.name}\` playlist (${playlist.songs.length} songs).\nRequested by: ${song.user.tag}\nNow playing \`${song.name}\` - \`${song.formattedDuration}\}`
     ))
     .on("addList", (message, queue, playlist) => message.channel.send(
-        `Added \`${playlist.name}\` playlist (${playlist.songs.length} songs) to queue\n${status(queue)}`
+        `Added \`${playlist.name}\` playlist (${playlist.songs.length} songs) to queue\n${queue}`
     ))
     .on("initQueue", queue => {
         queue.autoplay = false;
