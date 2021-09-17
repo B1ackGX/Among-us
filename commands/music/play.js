@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const { prefix } = require('../../config.json');
-const spotifyToYT = require("spotify-to-yt")
 
 module.exports = {
     name: "play",
@@ -20,15 +19,7 @@ module.exports = {
                     .setDescription(`Usage: \`${prefix}play <Song>\``)    
                 );
             message.channel.send(`🔎 **Searching** 🎵 \`${music}\``);
-            if (music.toLowerCase().includes("spotify") && music.toLowerCase().includes("track")){
-                const result = await spotifyToYT.trackGet(music)
-                client.distube.play(message, result.url)
-            } else if(music.toLowerCase().includes("spotify") && music.toLowerCase().includes("playlist")){
-                const result = await spotifyToYT.playListGet(music)
-                client.distube.playCustomPlaylist(message, result.songs)
-            } else{
                 client.distube.play(message, music);
-            }
         } catch(e) {
             return message.channel.send('❌ **No Matches**')
         }
