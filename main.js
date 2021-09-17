@@ -57,8 +57,8 @@ client.on("message", async message => {
         `**Playing**:notes: \`${song.name}\` - Now! `
     ))
     .on("addSong", (message, queue, song) => message.channel.send(new Discord.MessageEmbed()
-    .setDescription('**Added to queue**')
-    .addField('\u200B', `[${song.name}](${song.url})`)
+    .addField('\u200B','**Added to queue**')
+    .addField('\u200B', `[${song.name}](${song.url})`, true)
     .addFields(
     { name: '**Song Duration**', value: `${song.formattedDuration}`, inline: true},
     { name: '**Estimated Time Until Playing**', value: `${queue.formattedDuration}`, inline: true},
