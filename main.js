@@ -51,6 +51,7 @@ client.on("message", async message => {
     if (command) 
         command.run(client, message, args);
 });
+const status = (queue) => `Volume: \`${queue.volume}%\` | Filter: \`${queue.filter || "Off"}\` | Loop: \`${queue.repeatMode ? queue.repeatMode == 2 ? "All Queue" : "This Song" : "Off"}\` | Autoplay: \`${queue.autoplay ? "On" : "Off"}\``;
 
     client.distube
     .on("playSong", (message, queue, song) => message.channel.send(
