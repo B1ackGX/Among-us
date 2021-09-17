@@ -19,13 +19,13 @@ module.exports = {
             client.distube.setRepeatMode(message, 2)
             return message.channel.send('🔄 **Queue Loop Enabled**')
         }
-        if(queue.repeatMode = 2){
-            client.distube.setRepeatMode(message, 0)
-            return message.channel.send('❌ **Disabled Queue Loop**')
-        }
         if(queue.repeatMode = 0){
             client.distube.setRepeatMode(message, 2)
             return message.channel.send('🔄 **Queue Loop Enabled**')
+        }
+        if(queue.repeatMode = 2){
+            client.distube.setRepeatMode(message, 0)
+            return message.channel.send('❌ **Disabled Queue Loop**')
         }
     }
 }
