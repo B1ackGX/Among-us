@@ -22,7 +22,10 @@ module.exports = {
                 );
             if (music.toLowerCase().includes("spotify")){
                 message.channel.send(`${Spotify} **Searching** 🎵 \`${music}\``);
-            } else{
+            } 
+            if (music.toLowerCase().includes("youtube")){
+                message.channel.send(`${YouTube} **Searching** 🎵 \`${music}\``);
+            }else{
             message.channel.send(`🔎 **Searching** 🎵 \`${music}\``);
             }
             if (music.toLowerCase().includes("spotify") && music.toLowerCase().includes("track")){
