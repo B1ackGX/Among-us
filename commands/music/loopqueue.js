@@ -22,7 +22,7 @@ module.exports = {
         if(queue.repeatMode = 0){
             client.distube.setRepeatMode(message, 2)
             return message.channel.send('🔄 **Queue Loop Enabled**')
-        }else {
+        }else if(queue.repeatMode = 2){
             client.distube.setRepeatMode(message, 0)
             message.channel.send('❌ **Disabled Queue Loop**')
         }

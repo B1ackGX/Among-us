@@ -23,7 +23,7 @@ module.exports = {
             client.distube.setRepeatMode(message, 1)
             return message.channel.send('🔂 **Loop Enabled**')
         }
-        else{
+        else if(queue.repeatMode = 1){
             client.distube.setRepeatMode(message, 0)
             return message.channel.send('🔂 **Disabled**')
         }
