@@ -1,13 +1,12 @@
-const DisTube = require("distube");
-const { SpotifyPlugin } = require("@distube/spotify");
-const Discord = require('discord.js');
+const DisTube = require("distube")
+const Discord = require('discord.js')
 const { Client, Collection} = require("discord.js");
 const { config } = require("dotenv");
 const {prefix, token } = require("./config.json")
 const client = new Client({
     disableEveryone: true
 })
-const distube = new DisTube(client, { searchSongs: false, emitNewSongOnly: true, plugins: [new SpotifyPlugin()]})
+const distube = new DisTube(client, { searchSongs: false, emitNewSongOnly: true})
 client.distube = distube;
 // Collections
 client.commands = new Collection();
