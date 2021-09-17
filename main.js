@@ -60,7 +60,7 @@ client.on("message", async message => {
     .setDescription('**Added to queue')
     .addField(`[${song.name}](${song.url})`)
     .addFields(
-    { name: '**Channel**', value: `${song.channel.name}`},
+    { name: '**Channel**', value: `${song.channel}`},
     { name: '**Song Duration**', value: `${song.formattedDuration}`},
     { name: '**Estimated Time Until Playing**', value: `${queue.formattedDuration}`},
     { name: '**Position in Queue**', value: `${queue.songs.length + 1}`})
