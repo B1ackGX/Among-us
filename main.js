@@ -58,7 +58,6 @@ client.on("message", async message => {
     ))
     .on("addSong", (message, queue, song) => message.channel.send(new Discord.MessageEmbed()
     .setDescription('**Added to queue**')
-    .setThumbnail(`${song.setThumbnail}`)
     .addField('\u200B', `[${song.name}](${song.url})`)
     .addFields(
     { name: '**Song Duration**', value: `${song.formattedDuration}`, inline: true},
