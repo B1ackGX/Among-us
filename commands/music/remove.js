@@ -20,6 +20,7 @@ module.exports = {
                 .setDescription('❌ **Invalid Usage**')
                 .addField("\u200B", ".remove [index]")
                 .addField("\u200B", "Example: \`.remove 1\`")
+                .setColor('RED')
             )
         }
         if(queueN > queue.songs.length) {
@@ -27,9 +28,11 @@ module.exports = {
                 .setDescription('❌ **Invalid Usage**')
                 .addField("\u200B", ".remove [index]")
                 .addField("\u200B", "Example: \`.remove 1\`")
+                .setColor('RED')
             )
         }else {
             queue.delete(queueN)
+            return message.channel.send(`✔️ **Removed** \`${queue.songs[queueN].name}\``)
         }
     }
 }
