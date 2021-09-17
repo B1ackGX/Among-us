@@ -66,10 +66,9 @@ client.on("message", async message => {
     { name: '**Estimated Time Until Playing**', value: `${queue.formattedDuration}`, inline: true},
     { name: '**Position in Queue**', value: `${queue.songs.length - 1}`})
     ))
-    .on("playList", (message, queue, playlist, song) => message.channel.send(new Discord.MessageEmbed()
+    .on("playList", (message, queue, playlist) => message.channel.send(new Discord.MessageEmbed()
     .setTitle('**Playlist added to queue**')
     .setDescription(`${playlist.name}`)
-    .setThumbnail(`${playlist.thumbnail}`)
     .addFields(
     { name: '**Estimated Time until playing**', value: `${queue.formattedDuration}`},
     { name: '**Position in queue**', value: "Now", inline: true},
@@ -79,7 +78,6 @@ client.on("message", async message => {
     .on("addList", (message, queue, playlist) => message.channel.send(new Discord.MessageEmbed()
     .setTitle('**Playlist added to queue**')
     .setDescription(`${playlist.name}`)
-    .setThumbnail(`${playlist.thumbnail}`)
     .addFields(
     { name: '**Estimated Time until playing**', value: `${queue.formattedDuration}`},
     { name: '**Position in queue**', value: `${queue.song.length -1 }`, inline: true},
