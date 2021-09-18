@@ -28,7 +28,6 @@ module.exports = {
             }else{
                 message.channel.send(`🔎 **Searching** 🎵 \`${music}\``);
                 }
-                message.channel.send(`🔎 **Searching** 🎵 \`${music}\``);
             if (music.toLowerCase().includes("spotify") && music.toLowerCase().includes("track")){
                 const result = await spotifyToYT.trackGet(music)
                 client.distube.play(message, result.url)
