@@ -59,7 +59,7 @@ client.on("message", async message => {
     .on("addSong", (message, queue, song) => message.channel.send(new Discord.MessageEmbed()
     .setTitle('**Added to queue**')
     .setDescription(`[${song.name}](${song.url})`)
-    .setThumbnail(`${song.thumbnail.url}`)
+    .setThumbnail(`${song.thumbnail}`)
     .addFields(
     { name: '**Channel**', value: `${song.info.videoDetails.author.name}`, inline: true},
     { name: '**Song Duration**', value: `${song.formattedDuration}`, inline: true},
@@ -71,7 +71,7 @@ client.on("message", async message => {
     .setDescription(`${playlist.name}`)
     .setThumbnail(`${playlist.thumbnail.url}`)
     .addFields(
-    { name: '**Estimated Time until playing**', value: `Now`},
+    { name: '**Estimated Time until playing**', value: `${queue.formattedDuration}`},
     { name: '**Position in queue**', value: "Now", inline: true},
     { name: '**Enqueued**', value: `\`${playlist.songs.length}\` songs`, inline: true}
     )
