@@ -20,7 +20,7 @@ module.exports = {
                     .setTitle("❌ **You didn't provide a song!**")
                     .setDescription(`Usage: \`${prefix}play <Song>\``)    
                 );
-            if (music.toLowerCase().includes("spotify")){
+            if (music.toLowerCase().includes("spotify") && music.toLowerCase().includes("track")|| music.toLowerCase().includes("playlist")){
                 message.channel.send(`${Spotify} **Searching** 🎵 \`${music}\``);
             } 
             if (music.toLowerCase().includes("youtube")){
