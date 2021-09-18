@@ -20,12 +20,15 @@ module.exports = {
                     .setTitle("❌ **You didn't provide a song!**")
                     .setDescription(`Usage: \`${prefix}play <Song>\``)    
                 );
-            if (music.toLowerCase().includes("spotify")){
+            if (music.toLowerCase().includes("spotify") && music.toLowerCase().includes("track")){
                 message.channel.send(`${Spotify} **Searching** 🎵 \`${music}\``);
-            } 
+            }
+            if(music.toLowerCase().includes("spotify") && music.toLowerCase().includes("playlist")){
+                message.channel.send(`${Spotify} **Searching** 🎵 \`${music}\``);
+            }
             if (music.toLowerCase().includes("youtube")){
                 message.channel.send(`${YouTube} **Searching** 🎵 \`${music}\``);
-            }else if(!music.toLowerCase().includes("spotify") || !music.toLowerCase().includes("youtube")){
+            }else{
                 message.channel.send(`🔎 **Searching** 🎵 \`${music}\``);
             }
             if (music.toLowerCase().includes("spotify") && music.toLowerCase().includes("track")){
