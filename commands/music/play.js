@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const { prefix } = require('../../config.json');
 const spotifyToYT = require("spotify-to-yt")
-const {Spotify, YouTube} = require("./emoji.json")
+const {Spotify, YouTube} = require('./emoji.json')
 
 module.exports = {
     name: "play",
@@ -21,16 +21,14 @@ module.exports = {
                     .setDescription(`Usage: \`${prefix}play <Song>\``)    
                 );
             if (music.toLowerCase().includes("spotify") && music.toLowerCase().includes("track")){
-                message.channel.send(`${Spotify} **Searching** 🎵 \`${music}\``);
-            }
-            if(music.toLowerCase().includes("spotify") && music.toLowerCase().includes("playlist")){
-                message.channel.send(`${Spotify} **Searching** 🎵 \`${music}\``);
-            }
+                return message.channel.send(`${Spotify} **Searching** 🎵 \`${music}\``);
+                }
             if (music.toLowerCase().includes("youtube")){
-                message.channel.send(`${YouTube} **Searching** 🎵 \`${music}\``);
+                return message.channel.send(`${YouTube} **Searching** 🎵 \`${music}\``);
             }else{
                 message.channel.send(`🔎 **Searching** 🎵 \`${music}\``);
-            }
+                }
+                message.channel.send(`🔎 **Searching** 🎵 \`${music}\``);
             if (music.toLowerCase().includes("spotify") && music.toLowerCase().includes("track")){
                 const result = await spotifyToYT.trackGet(music)
                 client.distube.play(message, result.url)
