@@ -61,7 +61,7 @@ client.on("message", async message => {
     .setDescription(`[${song.name}](${song.url})`)
     .setThumbnail(`${song.thumbnail.url}`)
     .addFields(
-    { name: '**Channel**', value: `${song.uploader.name}`, inline: true},
+    { name: '**Channel**', value: `Implementing!`, inline: true},
     { name: '**Song Duration**', value: `${song.formattedDuration}`, inline: true},
     { name: '**Estimated Time Until Playing**', value: `${queue.formattedDuration}`, inline: true},
     { name: '**Position in Queue**', value: `${queue.songs.length - 1}`})
