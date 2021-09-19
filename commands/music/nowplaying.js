@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
-const progressbar = require('string-progressbar')
-
-
+const progressbar = require('string-progressbar');
+const toColonNotation = require('to-colon-notation');
 
 module.exports = {
     name: "nowplaying",
@@ -15,8 +14,8 @@ module.exports = {
         );
 
         
-        var total = queue.songs[0].formattedDuration.toString();
-        var current = queue.formattedCurrentTime
+        var total = toColonNotation(queue.songs[0].duration)
+        var current = toColonNotation(queue.CurrentTime)
 
         const splitbar = progressbar.splitBar(total, current)
         
