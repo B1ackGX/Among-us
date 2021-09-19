@@ -6,9 +6,11 @@ module.exports = {
     description: "Change the default volume",
     run: async (client, message, args) => {
         const queue = client.distube.getQueue(message)
-        if (!queue) return message.channel.send(`**There is nothing in the queue right now!**`)
+        if (!queue) 
+        return message.channel.send(`**There is nothing in the queue right now!**`)
         const volume = parseInt(args[0])
-        if (isNaN(volume)) return message.channel.send(`**Please enter a valid number!**`)
+        if (isNaN(volume)) 
+        return message.channel.send(`**Please enter a valid number!**`)
         if(volume >= 100){
             client.distube.setVolume(message, 100)
             message.channel.send('Volume set to 100!')
