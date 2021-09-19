@@ -36,6 +36,7 @@ module.exports = {
                 client.distube.play(message, music);
             }
         } catch(e) {
+            console.log(e);
             return message.channel.send('❌ **No Matches**')
         }
     }
