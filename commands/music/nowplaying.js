@@ -22,9 +22,10 @@ module.exports = {
 
         const embed = new Discord.MessageEmbed()
         .setTitle('**Now Playing** ♪')
+        .setThumbnail(`${queue.songs[0].thumbnail}`)
         .setDescription(`[${queue.songs[0].name}](${queue.songs[0].url})`)
         .addField(`${splitbar[0]}`, `\`${queue.formattedCurrentTime} / ${queue.songs[0].formattedDuration}\``)
-        .setFooter(`\Requested by:\ ${queue.songs[0].user.tag}`)
+        .setFooter(`\`Requested by:\` ${queue.songs[0].user.tag}`)
         message.channel.send(embed);
     }
 }
