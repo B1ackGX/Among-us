@@ -14,10 +14,17 @@ module.exports = {
         .setDescription('Nothing Playing!')
         );
 
+        /*
+        var total = queue.songs[0].formattedDuration
+        var current = queue.formattedCurrentTime
+
+        const splitbar = progressbar.splitBar(total, current)
+        */
+
         const embed = new Discord.MessageEmbed()
         .setTitle('**Now Playing** ♪')
         .setDescription(`[${queue.songs[0].name}](${queue.songs[0].url})`)
-        .addField(`test`, `\`${queue.songs[0].formattedCurrentTime} / ${queue.songs[0].formattedDuration}\``)
+        .addField(`test`, `\`${queue.formattedCurrentTime} / ${queue.songs[0].formattedDuration}\``)
         .setFooter(`\`Requested by:\` ${queue.songs[0].user.tag}`)
         message.channel.send(embed);
     }
