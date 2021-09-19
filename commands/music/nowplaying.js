@@ -15,7 +15,7 @@ module.exports = {
         );
         
         var total = queue.songs[0].formattedDuration
-        var current = Queue.formattedCurrentTime
+        var current = queue.formattedCurrentTime
 
         const splitbar = progressbar.splitBar(total, current)
 
