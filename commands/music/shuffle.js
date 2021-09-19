@@ -1,8 +1,7 @@
 const Discord = require('discord.js');
 
 module.exports = {
-    name: "queue",
-    aliases: ['q'],
+    name: "shuffle",
     description: "Check the current queue!",
     run: async (client, message, args) => {
         const queue = client.distube.getQueue(message)

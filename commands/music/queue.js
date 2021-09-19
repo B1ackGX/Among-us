@@ -5,6 +5,7 @@ module.exports = {
     aliases: ['q'],
     description: "Check the current queue!",
     run: async (client, message, args) => {
+        
         const queue = client.distube.getQueue(message)
         if (!queue) return message.channel.send(new Discord.MessageEmbed()
         .setTitle(`**Queue for ${message.guild}**`)
@@ -14,6 +15,20 @@ module.exports = {
        
         let string = "";
 
+        let l = "";
+        let lq = "";
+
+        if(queue.repeatMode = 1){
+            l = "✔️"
+        } else{
+            l = "❌"
+        }
+        if(queue.repeatMode = 2){
+            lq = "✔️"
+        } else{
+            lq = "❌"
+        }
+
         if(queue.songs[0]) string += `__Now Playing:__\n [${queue.songs[0].name}](${queue.songs[0].url})\n \`${queue.songs[0].formattedDuration} Requested by: ${queue.songs[0].user.tag}\``
         if(queue.songs[1]) string += `\n__Up Next:__\n ${queue.songs.map((song, id) => `\`${id}.\` [${song.name}](${song.url})\n \`${song.formattedDuration} Requested by: ${song.user.tag}\``).slice(1, 10).join("\n")}`
 
@@ -22,6 +37,7 @@ module.exports = {
         .setDescription(string)
         .setColor('RANDOM')
         .addField("\u200B", `**${queue.songs.length} songs in queue | ${queue.formattedDuration} total length**`)
-        return message.channel.send(embed)
+        .setFooter(`Loop: ${l} | Queue Loop: ${lq}`)
+        message.channel.send(embed)
     }
 }
