@@ -15,5 +15,6 @@ module.exports = {
             return message.channel.send(`**There is nothing in the queue right now!**`)
         }
         client.distube.shuffle(message)
+        message.channel.send('**Shuffled queue** 👌')
     }
 }
