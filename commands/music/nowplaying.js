@@ -17,7 +17,7 @@ module.exports = {
         var total = toMilliseconds(queue.songs[0].formattedDuration)
         var current = toMilliseconds(queue.formattedCurrentTime)
 
-        const splitbar = progressbar.splitBar(total, current)
+        const splitbar = progressbar.splitBar(total, current, size = 10);
         
 
         const embed = new Discord.MessageEmbed()
