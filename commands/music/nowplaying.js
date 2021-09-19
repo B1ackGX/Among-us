@@ -23,7 +23,7 @@ module.exports = {
         .setTitle('**Now Playing** ♪')
         .setDescription(`[${queue.songs[0].name}](${queue.songs[0].url})`)
         .addField(`${splitbar}`, `\`${queue.songs[0].duration} / ${queue.songs[0].formattedDuration}\``)
-        .setFooter(`\`Requested by: ${queue.songs[0].user.tag}`)
+        .setFooter(`\`Requested by:\` ${queue.songs[0].user.tag}`)
         message.channel.send(embed);
     }
 }
