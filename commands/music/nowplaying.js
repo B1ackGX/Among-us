@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const progressbar = require('string-progressbar');
-const toColonNotation = require('to-colon-notation');
+const toColonNotation = require('colon-notation');
 
 module.exports = {
     name: "nowplaying",
