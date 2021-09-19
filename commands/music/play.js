@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const { prefix } = require('../../config.json');
 const spotifyToYT = require("spotify-to-yt")
+const {Spotify, YouTube} = require('./emoji.json')
 
 module.exports = {
     name: "play",
