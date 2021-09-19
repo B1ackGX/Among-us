@@ -5,6 +5,19 @@ module.exports = {
     aliases: ['q'],
     description: "Check the current queue!",
     run: async (client, message, args) => {
+        let l = ""
+        let lq = ""
+
+        if(queue.repeatMode = 1){
+            l = "✔️"
+        } else{
+            l = "❌"
+        }
+        if(queue.repeatMode = 2){
+            lq = "✔️"
+        } else{
+            lq = "❌"
+        }
         const queue = client.distube.getQueue(message)
         if (!queue) return message.channel.send(new Discord.MessageEmbed()
         .setTitle(`**Queue for ${message.guild}**`)
@@ -22,6 +35,6 @@ module.exports = {
         .setDescription(string)
         .setColor('RANDOM')
         .addField("\u200B", `**${queue.songs.length} songs in queue | ${queue.formattedDuration} total length**`)
-        return message.channel.send(embed)
+        .setFooter(`Loop: ${l} | Queue Loop: ${lq}`)
     }
 }
