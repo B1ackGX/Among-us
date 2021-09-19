@@ -18,16 +18,13 @@ module.exports = {
         let l = "";
         let lq = "";
 
-        if(queue.repeatMode = 0){
+        if(queue.repeatMode = 0)
             l = "❌"
             lq = "❌"
-        }
-        if(queue.repeatMode = 1){
+        if(queue.repeatMode = 1)
             l = "✔️"
-        }
-        if(queue.repeatMode = 2){
+        if(queue.repeatMode = 2)
             lq = "✔️"
-        }
 
         if(queue.songs[0]) string += `__Now Playing:__\n [${queue.songs[0].name}](${queue.songs[0].url})\n \`${queue.songs[0].formattedDuration} Requested by: ${queue.songs[0].user.tag}\``
         if(queue.songs[1]) string += `\n__Up Next:__\n ${queue.songs.map((song, id) => `\`${id}.\` [${song.name}](${song.url})\n \`${song.formattedDuration} Requested by: ${song.user.tag}\``).slice(1, 10).join("\n")}`
