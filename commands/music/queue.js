@@ -23,6 +23,6 @@ module.exports = {
         .setDescription(string)
         .setColor('RANDOM')
         .addField("\u200B", `**${queue.songs.length} songs in queue | ${queue.formattedDuration} total length**`)
-        message.channel.send(embed, { split: true });
+        message.channel.send(embed)
     }
 }
