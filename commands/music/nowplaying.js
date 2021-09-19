@@ -1,10 +1,11 @@
 const Discord = require('discord.js');
 const progressbar = require('string-progressbar')
-const { toColonNotation } = require('colon-notation')
+
+
 
 module.exports = {
     name: "nowplaying",
-    aliases: ['np'],
+    aliases: ['np', 'nowplay'],
     description: "Check the current queue!",
     run: async (client, message, args) => {
         const queue = client.distube.getQueue(message)
@@ -13,5 +14,16 @@ module.exports = {
         .setDescription('Nothing Playing!')
         );
         
+        var total = queue.songs[0].duration
+        var current = queue.songs[0].formattedDuration
+
+        const splitbar = progressbar.splitBar(total, current)
+
+        const embed = new Discord.MessageEmbed()
+        .setTitle('**Now Playing** ♪')
+        .setDescription(`[${queue.songs[0].name}](${queue.songs[0].url})`)
+        .addField(`${splitbar}`, `\`${queue.songs[0].duration} / ${queue.songs[0].formattedDuration}\``)
+        .setFooter(`\`Requested by: ${queue.songs[0].user.tag}`)
+        message.channel.send(embed);
     }
 }
