@@ -82,7 +82,7 @@ client.on("message", async message => {
     .setThumbnail(`${playlist.thumbnail.url}`)
     .addFields(
     { name: '**Estimated Time until playing**', value: `${queue.formattedDuration}`},
-    { name: '**Position in queue**', value: `${queue.song.length -1 }`, inline: true},
+    { name: '**Position in queue**', value: `${queue.songs.length -1 }`, inline: true},
     { name: '**Enqueued**', value: `\`${queue.songs.length - 1}\` songs`, inline: true}
     )
     ))
