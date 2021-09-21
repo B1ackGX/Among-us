@@ -18,7 +18,7 @@ module.exports = {
         if (!qo){
             return message.channel.send('❌ **Plese give me a song number!**')
         }
-        client.distube.jump(message, qo);
         message.channel.send(`⏩ **Skipped to** \`${queue.songs[qo].name}\``)
+        client.distube.jump(message, qo);
     }
 }

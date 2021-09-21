@@ -5,14 +5,13 @@ module.exports = {
     aliases: ['q'],
     description: "Check the current queue!",
     run: async (client, message, args) => {
-        
         const queue = client.distube.getQueue(message)
         if (!queue) return message.channel.send(new Discord.MessageEmbed()
         .setTitle(`**Queue for ${message.guild}**`)
         .setDescription(`__Now Playing:__\nNothing Playing!`)
         .setColor('RANDOM')
         );
-       
+        
         let string = "";
 
         if(queue.songs[0]) string += `__Now Playing:__\n [${queue.songs[0].name}](${queue.songs[0].url})\n \`${queue.songs[0].formattedDuration} Requested by: ${queue.songs[0].user.tag}\``
