@@ -37,13 +37,6 @@ module.exports = {
             } else{
                 client.distube.play(message, music);
             }
-            if(queue.songs[0] && !queue.song.length[1]) {
-            client.distube.on("playSong", (message, song) => message.channel.send(
-                `**Playing**:notes: \`${song.name}\` - Now! `
-            ))
-            } else {
-                return
-            }
         } catch(e) {
             console.log(e);
             return message.channel.send('❌ **No Matches**')
