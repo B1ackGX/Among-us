@@ -51,9 +51,6 @@ client.on("message", async message => {
     if (command) 
         command.run(client, message, args);
 });
-
-    const queue = client.distube.getQueue(message)
-
     client.distube
     .on("addSong", (message, queue, song) => message.channel.send(new Discord.MessageEmbed()
     .setTitle('**Added to queue**')
