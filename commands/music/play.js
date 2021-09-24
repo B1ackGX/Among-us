@@ -10,6 +10,7 @@ module.exports = {
     run: async (client, message, args) => {
         const music = args.join(" ");
         try{
+            const queue = client.distube.getQueue(message)
             if(!message.member.voice.channel)
                 return message.channel.send('❌ **Please join a voice channel!**');
             if(client.distube.isPlaying(message) && message.member.voice.channel != message.guild.me.voice.channel)
