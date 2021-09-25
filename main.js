@@ -51,7 +51,6 @@ client.on("message", async message => {
     // If a command is finally found, run the command
     if (command) 
         command.run(client, message, args);
-});
     
     client.distube
     .on("playSong", (message, queue, song) => message.channel.send(
@@ -94,4 +93,6 @@ client.on("message", async message => {
         console.error(e)
         message.channel.send("An error encountered: " + e);
     });
+});
+    
 client.login(process.env.token);
