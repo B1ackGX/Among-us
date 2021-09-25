@@ -52,11 +52,12 @@ client.on("message", async message => {
     if (command) 
         command.run(client, message, args);
 });
-    
+
     client.distube
-    .on("playSong", (message, queue, song) => message.channel.send(
-        `**Playing**:notes: \`${song.name}\` - Now! `
-    ))
+    .on("playSong", (message, queue, song) => {if (queue.songs[0].name == song.name){
+        return console.log('this is first song of the queue')
+    } message.channel.send(`**Playing**:notes: \`${song.name}\` - Now! `)
+    })
     .on("addSong", (message, queue, song) => message.channel.send(new Discord.MessageEmbed()
     .setTitle('**Added to queue**')
     .setDescription(`[${song.name}](${song.url})`)
