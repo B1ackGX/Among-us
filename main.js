@@ -54,10 +54,9 @@ client.on("message", async message => {
 });
     
     client.distube
-    .on("playSong", (message, queue, song) => {if (queue.songs[1].name == song.name){
-        return
-    } message.channel.send(`**Playing**:notes: \`${song.name}\` - Now! `)
-    }) 
+    .on("playSong", (message, queue, song) => (
+        console.log(queue.every('test')))
+    )
     .on("addSong", (message, queue, song) => message.channel.send(new Discord.MessageEmbed()
     .setTitle('**Added to queue**')
     .setDescription(`[${song.name}](${song.url})`)
