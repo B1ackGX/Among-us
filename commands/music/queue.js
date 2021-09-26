@@ -25,9 +25,6 @@ module.exports = {
         .setDescription(string)
         .setColor('RANDOM')
         .addField("\u200B", `**${queue.songs.length} songs in queue | ${queue.formattedDuration} total length**`)
-        pages = [
-            embed
-        ]
-        paginationEmbed(msg, pages, emojiList, 60000);
+        message.channel.send(embed)
     }
 }
