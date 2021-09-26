@@ -23,11 +23,13 @@ module.exports = {
         .setDescription(string)
         .setColor('RANDOM')
         .addField("\u200B", `**${queue.songs.length} songs in queue | ${queue.formattedDuration} total length**`)
-        
+
         const pages = [
             embed
         ]
 
-        pagination(message, pages, emojiList, 60000);
+        const emoji = ["⏪", "⏩"]
+
+        pagination(message, pages, emoji, 60000);
     }
 }
