@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const paginationEmbed = require('discord.js-pagination');
+const pagination = require('discord.js-pagination');
 
 module.exports = {
     name: "queue",
@@ -28,6 +28,7 @@ module.exports = {
         pages = [
             embed
         ]
-        paginationEmbed(msg, pages, emojiList, 60000);
+        
+        pagination(message, pages, emojiList, 60000);
     }
 }
