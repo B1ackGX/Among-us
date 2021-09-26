@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const paginationEmbed = require('discord.js-pagination');
 
 module.exports = {
     name: "queue",
@@ -24,6 +25,9 @@ module.exports = {
         .setDescription(string)
         .setColor('RANDOM')
         .addField("\u200B", `**${queue.songs.length} songs in queue | ${queue.formattedDuration} total length**`)
-        message.channel.send(embed)
+        pages = [
+            embed
+        ]
+        paginationEmbed(msg, pages, emojiList, 60000);
     }
 }
