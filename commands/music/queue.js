@@ -23,7 +23,6 @@ module.exports = {
         .setDescription(string)
         .setColor('RANDOM')
         .addField("\u200B", `**${queue.songs.length} songs in queue | ${queue.formattedDuration} total length**`)
-       
 
         const pages = [
             embed
