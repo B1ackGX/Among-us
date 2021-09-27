@@ -24,10 +24,17 @@ module.exports = {
         .setColor('RANDOM')
         .addField("\u200B", `**${queue.songs.length} songs in queue | ${queue.formattedDuration} total length**`)
 
-        const pages = [
-            embed
-        ]
+        const embed2 = new Discord.MessageEmbed()
+        .setTitle(`**Queue for ${message.guild}**`)
+        .setDescription(string)
+        .setColor('RANDOM')
+        .addField("\u200B", `**${queue.songs.length} songs in queue | ${queue.formattedDuration} total length**`)
 
+        const pages = [
+            embed,
+            embed2
+        ]
+        
         const emoji = ["⏪", "⏩"]
 
         pagination(message, pages, emoji, 60000);
