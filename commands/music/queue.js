@@ -20,12 +20,6 @@ module.exports = {
 
         const embed = new Discord.MessageEmbed()
         .setTitle(`**Queue for ${message.guild}**`)
-        .setDescription(string)
-        .setColor('RANDOM')
-        .addField("\u200B", `**${queue.songs.length} songs in queue | ${queue.formattedDuration} total length**`)
-
-        const embed2 = new Discord.MessageEmbed()
-        .setTitle(`**Queue for ${message.guild}**`)
         .setDescription(string.slice(0,10))
         .setColor('RANDOM')
         .addField("\u200B", `**${queue.songs.length} songs in queue | ${queue.formattedDuration} total length**`)
