@@ -54,7 +54,7 @@ client.on("message", async message => {
 });
     
     client.distube
-    .on("playSong", (message, queue, song) => {if(queue.songs[0] && queue.songs.length == 0){
+    .on("playSong", (message, queue, song) => {if(queue.songs[0] && queue.songs.length === 0){
         return message.channel.send(`**Playing**:notes: \`${song.name}\` - Now! `)
     } else{
         return
