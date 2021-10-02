@@ -1,5 +1,5 @@
 module.exports = {
-    name: "clear",
+    name: "purge",
     category: "moderation",
     description: "Clears the chat",
     run: async (client, message, args) => {
