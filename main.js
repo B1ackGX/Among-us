@@ -84,7 +84,7 @@ client.on("message", async message => {
     { name: '**Enqueued**', value: `\`${queue.songs.length - 1}\` songs`, inline: true}
     )
     ))
-    .on("initQueue", queue => {
+    .on("initQueue", (queue, song) => {
         queue.autoplay = false;
         queue.initMessage = `**Playing**:notes: \`${song.name}\` - Now! `;
     })
