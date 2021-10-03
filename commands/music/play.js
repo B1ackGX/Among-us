@@ -36,7 +36,6 @@ module.exports = {
                 client.distube.playCustomPlaylist(message, result.songs)
             } else{
                 client.distube.play(message, music);
-                queue.initMessage(message.channel.send(`**Playing**:notes: \`${song.name}\` - Now! `))
             }
         } catch(e) {
             console.log(e);

@@ -54,7 +54,10 @@ client.on("message", async message => {
 });
     
     client.distube
-    .on("addSong", (message, queue, song) => message.channel.send(new Discord.MessageEmbed()
+    .on("addSong", (message, queue, song) => {if(queue.songs[0] && queue.songs.length === 1){
+        message.channel.send(`**Playing**:notes: \`${song.name}\` - Now! `)
+    } else {
+        message.channel.send(new Discord.MessageEmbed()
     .setTitle('**Added to queue**')
     .setDescription(`[${song.name}](${song.url})`)
     .setThumbnail(`${song.thumbnail}`)
@@ -63,7 +66,9 @@ client.on("message", async message => {
     { name: '**Song Duration**', value: `${song.formattedDuration}`, inline: true},
     { name: '**Estimated Time Until Playing**', value: `${queue.formattedDuration}`, inline: true},
     { name: '**Position in Queue**', value: `${queue.songs.length - 1}`})
-    ))
+    )
+    }
+    })
     .on("playList", (message, queue, playlist) => message.channel.send(new Discord.MessageEmbed()
     .setTitle('**Playlist added to queue**')
     .setDescription(`${playlist.name}`)
