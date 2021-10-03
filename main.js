@@ -54,6 +54,8 @@ client.on("message", async message => {
 });
     
     client.distube
+    .on("playSong", (message, queue, song) => { queue.initMessage(message.channel.send(`**Playing**:notes: \`${song.name}\` - Now! `), queue)
+    })
     .on("addSong", (message, queue, song) => message.channel.send(new Discord.MessageEmbed()
     .setTitle('**Added to queue**')
     .setDescription(`[${song.name}](${song.url})`)
@@ -84,9 +86,8 @@ client.on("message", async message => {
     { name: '**Enqueued**', value: `\`${queue.songs.length - 1}\` songs`, inline: true}
     )
     ))
-    .on("initQueue", (message, queue, song) => {
+    .on("initQueue", queue => {
         queue.autoplay = false;
-        queue.initMessage = message.channel.send(`**Playing**:notes: \`${song.name}\` - Now! `)
     })
     .on("error", (message, e) => {
         console.error(e)
