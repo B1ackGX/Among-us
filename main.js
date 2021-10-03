@@ -6,7 +6,7 @@ const {prefix, token, cookie } = require("./config.json")
 const client = new Client({
     disableEveryone: true
 })
-const distube = new DisTube(client, { searchSongs: false, emitNewSongOnly: true, youtubeCookie: cookie})
+const distube = new DisTube(client, { searchSongs: false, emitNewSongOnly: true, youtubeCookie: cookie, updateYouTubeDL: false})
 client.distube = distube;
 
 // Collections
