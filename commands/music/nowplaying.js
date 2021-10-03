@@ -25,7 +25,7 @@ module.exports = {
         .setThumbnail(`${queue.songs[0].thumbnail}`)
         .setDescription(`[${queue.songs[0].name}](${queue.songs[0].url})`)
         .addFields({name: `${splitbar[0]}`, value: `\`${queue.formattedCurrentTime} / ${queue.songs[0].formattedDuration}\``})
-        .addField('\`Requested by:\` ', queue.songs[0].user.tag, true,)
+        .addField('\`Requested by:\` ', queue.songs[0].user.tag, inline = true)
         message.channel.send(embed);
     }
 }
