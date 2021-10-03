@@ -2,11 +2,11 @@ const DisTube = require("distube")
 const Discord = require('discord.js')
 const { Client, Collection} = require("discord.js");
 const { config } = require("dotenv");
-const {prefix, token } = require("./config.json")
+const {prefix, token, cookie } = require("./config.json")
 const client = new Client({
     disableEveryone: true
 })
-const distube = new DisTube(client, { searchSongs: false, emitNewSongOnly: true, youtubeCookie: "SIDCC=AJi4QfHrYiHFK7fqsgqmwdG1ZQJ5fU2nJPfA9syfAcuJSW5E51JoyeTIO_vUEY2N0SeXC0FnUQXi"})
+const distube = new DisTube(client, { searchSongs: false, emitNewSongOnly: true, youtubeCookie: cookie})
 client.distube = distube;
 
 // Collections
