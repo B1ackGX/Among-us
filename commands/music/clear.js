@@ -17,8 +17,8 @@ module.exports = {
         if (!queue) {
             return message.channel.send(`**There is nothing playing!**`)
         }
-        queue.songs.splice(queue.songs.length, 0)
-        client.distube.stop(message)
+        let test = queue.songs.splice(queue.songs.length, 0)
+        console.log(test)
         message.channel.send(`💥 **Cleared...** ⏹️`)
     }
 }
