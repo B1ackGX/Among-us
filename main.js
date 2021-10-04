@@ -86,7 +86,7 @@ client.on("message", async message => {
     ))
     .on("initQueue", queue => {
         queue.autoplay = false;
-        queue.initMessage = `**Playing**:notes: \`${song.name}\` - Now! `
+        queue.initMessage = `**Playing**:notes: \`${queue.songs[0].name}\` - Now! `
     })
     .on("error", (message, e) => {
         console.error(e)
