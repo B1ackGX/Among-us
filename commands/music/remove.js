@@ -39,7 +39,7 @@ module.exports = {
                     message.channel.send(`:white_check_mark:  **Removed** \`${queue.songs[queueN].name}\``)
                     queue.songs.splice(queueN, 1)
                     client.distube.stop(message)
-                }else {
+                }else if(queue.songs[1]){
                     message.channel.send(`:white_check_mark:  **Removed** \`${queue.songs[queueN].name}\``)
                     queue.songs.splice(queueN, 1)
                     client.distube.skip(message)
