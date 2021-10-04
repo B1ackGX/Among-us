@@ -17,9 +17,8 @@ module.exports = {
         }
         if(client.distube.isPlaying(message) === true){
             message.channel.send('❌ **It is not on pause!**')
-        } else {
+        } 
         client.distube.resume(message)
         message.channel.send('⏯ **Resuming**')
-        }
     }
 }
