@@ -21,6 +21,7 @@
     "dotenv": "^10.0.0",
     "ffmpeg-static": "^4.4.0",
     "mathjs": "^9.4.4",
+    "mongoose": "^6.0.8",
     "spotify-to-yt": "^1.0.5",
     "string-progressbar": "^1.0.4",
     "ytdl-core": "^4.9.1"
