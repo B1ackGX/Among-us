@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: "remove",
-    description: "Loop current queue",
+    description: "remove a song from the current queue",
     run: async (client, message, args) => {
         var queueN = `${args}`
         if(!message.member.voice.channel){
