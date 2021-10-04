@@ -19,6 +19,8 @@ module.exports = {
             message.channel.send('❌ **It is not on pause!**')
         } 
         client.distube.resume(message)
+        client.distube.pause(message)
+        client.distube.resume(message)
         message.channel.send('⏯ **Resuming**')
     }
 }
