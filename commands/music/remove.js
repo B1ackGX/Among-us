@@ -37,7 +37,6 @@ module.exports = {
             if(queueN == 0){
                 message.channel.send(`:white_check_mark:  **Removed** \`${queue.songs[queueN].name}\``)
                 client.distube.skip(message)
-                queue.songs.splice(queueN, 0)  
             } else {
             message.channel.send(`:white_check_mark:  **Removed** \`${queue.songs[queueN].name}\``)
             return queue.songs.splice(queueN, 0);
