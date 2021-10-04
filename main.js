@@ -57,8 +57,7 @@ client.on("message", async message => {
     .on("playSong", (message, queue, song) => {
     if(queue.songs[0] && queue.songs.length === 1){
         return message.channel.send(`**Playing**:notes: \`${song.name}\` - Now! `)
-    } 
-    if(!queue.songs[1]){
+    } else {
         return
     }
     })
