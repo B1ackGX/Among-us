@@ -18,6 +18,7 @@ module.exports = {
             return message.channel.send(`**There is nothing playing!**`)
         }
         queue.songs.splice(queue.songs.length, 0)
+        client.distube.stop(message)
         message.channel.send(`💥 **Cleared...** ⏹️`)
     }
 }
