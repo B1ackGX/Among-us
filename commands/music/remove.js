@@ -34,8 +34,14 @@ module.exports = {
                 .setColor('RED')
             )
         }else {
+            if(queueN == 0){
+                message.channel.send(`:white_check_mark:  **Removed** \`${queue.songs[queueN].name}\``)
+                queue.songs.splice(queueN, 1)
+                client.distube.stop(message)
+            } else {
             message.channel.send(`:white_check_mark:  **Removed** \`${queue.songs[queueN].name}\``)
             return queue.songs.splice(queueN, 1);
+            }
         }
     }
 }
