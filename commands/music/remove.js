@@ -39,7 +39,7 @@ module.exports = {
                 client.distube.skip(message)
             } else {
             message.channel.send(`:white_check_mark:  **Removed** \`${queue.songs[queueN].name}\``)
-            return queue.songs.splice(queueN, 0);
+            return queue.songs.splice(queueN, 1);
             }
         }
     }
