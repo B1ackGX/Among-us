@@ -35,15 +35,9 @@ module.exports = {
             )
         }else {
             if(queueN == 0){
-                if(!queue.songs[1]){
-                    message.channel.send(`:white_check_mark:  **Removed** \`${queue.songs[queueN].name}\``)
-                    queue.songs.splice(queueN, 1)
-                    client.distube.stop(message)
-                }else if(queue.songs[1]){
-                    message.channel.send(`:white_check_mark:  **Removed** \`${queue.songs[queueN].name}\``)
-                    queue.songs.splice(queueN, 1)
-                    client.distube.skip(message)
-                }
+                message.channel.send(`:white_check_mark:  **Removed** \`${queue.songs[queueN].name}\``)
+                client.distube.skip(message)
+                queue.songs.splice(queueN, 1)  
             } else {
             message.channel.send(`:white_check_mark:  **Removed** \`${queue.songs[queueN].name}\``)
             return queue.songs.splice(queueN, 1);
