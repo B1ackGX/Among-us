@@ -2,7 +2,6 @@ const DisTube = require("distube")
 const Discord = require('discord.js')
 const { Client, Collection} = require("discord.js");
 const { config } = require("dotenv");
-const mongoose = require('./database/mongoose')
 const {prefix, cookie } = require("./config.json")
 const client = new Client({
     disableEveryone: true
@@ -102,5 +101,4 @@ client.on("message", async message => {
         console.error(e)
         message.channel.send("An error encountered: " + e);
     });
-mongoose.init();
 client.login(process.env.token);
