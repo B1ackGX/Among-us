@@ -29,8 +29,10 @@ module.exports = {
                     queueEmbed.edit(pages[currentPage])
                 }
             } else if(reaction.emoji.name === '⏪'){
-                --currentPage
-                queueEmbed.edit(pages[currentPage])
+                if(currentPage !== 0){
+                    --currentPage
+                    queueEmbed.edit(pages[currentPage])
+                }
             }
         })
 
