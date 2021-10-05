@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const pagination = require('discord.js-pagination');
 
 module.exports = {
     name: "queue",
