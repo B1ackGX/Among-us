@@ -19,7 +19,7 @@ module.exports = {
         await queueEmbed.react('⏩')
 
         const filter = (reaction) => ['⏪', '⏩'].includes(reaction.emoji.name)
-        const collector = queueEmbe.createReactionCollector(filter)
+        const collector = queueEmbed.createReactionCollector(filter)
 
         collector.on('collect', (reaction) => {
             if(reaction.emoji.name === '⏩') {
