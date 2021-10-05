@@ -13,8 +13,17 @@ module.exports = {
         .setColor('RANDOM')
         );
         
+        if(queue.songs[0]) string += `__Now Playing:__\n [${queue.songs[0].name}](${queue.songs[0].url})\n \`${queue.songs[0].formattedDuration} Requested by: ${queue.songs[0].user.tag}\``
+        if(queue.songs[1]) string += `\n__Up Next:__\n ${queue.songs.map((song, id) => `\`${id}.\` [${song.name}](${song.url})\n \`${song.formattedDuration} Requested by: ${song.user.tag}\``).slice(1, 10).join("\n")}`
+
+        const embed = new Discord.MessageEmbed()
+        .setTitle(`**Queue for ${message.guild}**`)
+        .setDescription(string)
+        .setColor('RANDOM')
+        .addField("\u200B", `**${queue.songs.length} songs in queue | ${queue.formattedDuration} total length**`)
+
+
         const pages = generateQueueEmbed(queue)
-        
         function generateQueueEmbed(queue){
             const pages = []
             let k = 10;
@@ -31,7 +40,7 @@ module.exports = {
             return pages;
         }
         if(pages.length <= 10){
-            message.channel.send(pages[0])
+            message.channel.send(embed)
         } else{
         const emoji = ["⏪", "⏩"]
         pagination(message, pages, emoji, 60000);
