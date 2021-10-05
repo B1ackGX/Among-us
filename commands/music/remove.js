@@ -4,7 +4,7 @@ module.exports = {
     name: "remove",
     description: "remove a song from the current queue",
     run: async (client, message, args) => {
-        var queueN = `${args}`
+        const queueN = parseInt(args[0])
         const queue = client.distube.getQueue(message)
         if(!message.member.voice.channel){
             return message.channel.send('❌ **Please join the voice channel!**');
