@@ -21,7 +21,7 @@ module.exports = {
         .setDescription(string)
         .setColor('RANDOM')
         .addField("\u200B", `**${queue.songs.length} songs in queue | ${queue.formattedDuration} total length**`)
-        .setFooter('Page 1/1')
+        .setFooter('Page 1 / 1')
 
         const pages = generateQueueEmbed(queue)
         function generateQueueEmbed(queue){
