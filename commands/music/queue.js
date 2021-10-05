@@ -20,7 +20,7 @@ module.exports = {
             let k = 10;
             for(let i = 0; i < queue.songs.length; i += 10){
                 const current = queue.songs.slice(i, k)
-                let j = i + 1;
+                let j = i;
                 k += 10;
                 const info = current.map(song => `\`${++j}.\` [${song.name}](${song.url})\n \`${song.formattedDuration} Requested by: ${song.user.tag}\``).join('\n');
                 const embed = new Discord.MessageEmbed()
