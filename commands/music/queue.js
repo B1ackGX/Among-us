@@ -30,9 +30,11 @@ module.exports = {
             }
             return pages;
         }
-
+        if(pages.length <= 10){
+            message.channel.send(pages)
+        } else{
         const emoji = ["⏪", "⏩"]
-
         pagination(message, pages, emoji, 60000);
+        }
     }
 }
