@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const pagination = require('discord.js-pagination');
 
 module.exports = {
     name: "queue",
@@ -6,36 +7,23 @@ module.exports = {
     description: "Check the current queue!",
     run: async (client, message, args) => {
         const queue = client.distube.getQueue(message)
-        if (!queue) {
-        return message.channel.send(new Discord.MessageEmbed()
+        if (!queue) return message.channel.send(new Discord.MessageEmbed()
         .setTitle(`**Queue for ${message.guild}**`)
         .setDescription(`__Now Playing:__\nNothing Playing!`)
         .setColor('RANDOM')
-        )}
+        );
+        
+        let string = "";
+        if(queue.songs[0]) string += `__Now Playing:__\n [${queue.songs[0].name}](${queue.songs[0].url})\n \`${queue.songs[0].formattedDuration} Requested by: ${queue.songs[0].user.tag}\``
+        if(queue.songs[1]) string += `\n__Up Next:__\n ${queue.songs.map((song, id) => `\`${id}.\` [${song.name}](${song.url})\n \`${song.formattedDuration} Requested by: ${song.user.tag}\``).slice(1, 10).join("\n")}`
+        const embed = new Discord.MessageEmbed()
+        .setTitle(`**Queue for ${message.guild}**`)
+        .setDescription(string)
+        .setColor('RANDOM')
+        .addField("\u200B", `**${queue.songs.length} songs in queue | ${queue.formattedDuration} total length**`)
+        .setFooter('Page 1/1')
 
-        let currentPage = 0;
         const pages = generateQueueEmbed(queue)
-        const queueEmbed = await message.channel.send(pages[currentPage].setFooter(`Page ${currentPage+1} / ${pages.length}`), pages[currentPage])
-        await queueEmbed.react('⏪')
-        await queueEmbed.react('⏩')
-
-        const filter = (reaction, user) => reaction['⏪', '⏩'].includes(reaction.emoji.name) && !user.bot
-        const collector = queueEmbed.createReactionCollector(filter)
-
-        collector.on('collect', reaction => {
-            if(reaction.emoji.name === '⏩') {
-                if(currentPage < pages.length-1) {
-                    currentPage++;
-                    queueEmbed.edit(pages[currentPage].setFooter(`Page ${currentPage+1} / ${pages.length}`), pages[currentPage])
-                }
-            } else if(reaction.emoji.name === '⏪'){
-                if(currentPage !== 0){
-                    --currentPage
-                    queueEmbed.edit(pages[currentPage].setFooter(`Page ${currentPage+1} / ${pages.length}`), pages[currentPage])
-                }
-            }
-        })
-
         function generateQueueEmbed(queue){
             const pages = []
             let k = 10;
@@ -52,6 +40,12 @@ module.exports = {
                 pages.push(embed);
             }
             return pages;
+        }
+        if(pages.length <= 10){
+            message.channel.send(embed)
+        } else{
+        const emoji = ["⏪", "⏩"]
+        pagination(message, pages, emoji, 60000);
         }
     }
 }
