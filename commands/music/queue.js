@@ -22,10 +22,10 @@ module.exports = {
                 const current = queue.songs.slice(i, k)
                 let j = i-1;
                 k += 10;
-                const info = current.map(song => `\`${++j}.\` [${song.name}](${song.url})\n \`${song.formattedDuration} Requested by: ${song.user.tag}\``).join('\n');
+                const info = current.map(song => `__Up Next:__\n\`${++j}.\` [${song.name}](${song.url})\n \`${song.formattedDuration} Requested by: ${song.user.tag}\``).join('\n');
                 const embed = new Discord.MessageEmbed()
                 .setTitle(`**Queue for ${message.guild}**`)
-                .setDescription(`Now Playing: [${queue.songs[0].name}](${queue.songs[0].url})\n \`${queue.songs[0].formattedDuration} Requested by: ${queue.songs[0].user.tag}\`\n${info}`)
+                .setDescription(`__Now Playing:__\n[${queue.songs[0].name}](${queue.songs[0].url})\n \`${queue.songs[0].formattedDuration} Requested by: ${queue.songs[0].user.tag}\`\n${info}`)
                 pages.push(embed);
             }
             return pages;
