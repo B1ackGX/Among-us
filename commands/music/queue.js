@@ -6,11 +6,12 @@ module.exports = {
     description: "Check the current queue!",
     run: async (client, message, args) => {
         const queue = client.distube.getQueue(message)
-        if (!queue) return message.channel.send(new Discord.MessageEmbed()
+        if (!queue) {
+        return message.channel.send(new Discord.MessageEmbed()
         .setTitle(`**Queue for ${message.guild}**`)
         .setDescription(`__Now Playing:__\nNothing Playing!`)
         .setColor('RANDOM')
-        );
+        )}
 
         let currentPage = 0;
         const pages = generateQueueEmbed(queue)
