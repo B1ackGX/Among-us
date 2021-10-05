@@ -41,7 +41,7 @@ module.exports = {
             }
             return pages;
         }
-        if(pages.length <= 10){
+        if(pages.length <= 1){
             message.channel.send(embed)
         } else{
         const emoji = ["⏪", "⏩"]
