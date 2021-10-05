@@ -13,7 +13,27 @@ module.exports = {
         .setColor('RANDOM')
         );
 
+        let currentPage = 0;
         const pages = generateQueueEmbed(queue)
+        const queueEmbed = await message.channel.send(pages[currentPage])
+        await queueEmbed.react('⏪')
+        await queueEmbed.react('⏩')
+
+        const filter = (reaction) => ['⏪', '⏩'].includes(reaction.emoji.name)
+        const collector = queueEmbe.createReactionCollector(filter)
+
+        collector.on('collect', (reaction) => {
+            if(reaction.emoji.name === '⏩') {
+                if(currentPage < pages.length-1) {
+                    currentPage++;
+                    queueEmbed.edit(pages[currentPage])
+                }
+            } else if(reaction.emoji.name === '⏪'){
+                --currentPage
+                queueEmbed.edit(pages[currentPage])
+            }
+        })
+
         function generateQueueEmbed(queue){
             const pages = []
             let k = 10;
@@ -27,11 +47,10 @@ module.exports = {
                 .setDescription(`__Now Playing:__\n[${queue.songs[0].name}](${queue.songs[0].url})\n \`${queue.songs[0].formattedDuration} Requested by: ${queue.songs[0].user.tag}\`\n__Up Next:__\n${info}`)
                 .setColor('RANDOM')
                 .addField("\u200B", `**${queue.songs.length} songs in queue | ${queue.formattedDuration} total length**`)
+                .setFooter(`Page ${currentPage+1}/${pages.length}`)
                 pages.push(embed);
             }
             return pages;
         }
-        const emoji = ["⏪", "⏩"]
-        pagination(message, pages, emoji, 60000);
     }
 }
