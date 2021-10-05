@@ -34,7 +34,7 @@ module.exports = {
                 .setColor('RED')
             )
         }else {
-            if(queueN == 0){
+            if(queueN === 0){
                 message.channel.send(`:white_check_mark:  **Removed** \`${queue.songs[queueN].name}\``)
                 client.distube.skip(message)
             } else {
