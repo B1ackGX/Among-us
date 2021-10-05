@@ -15,7 +15,7 @@ module.exports = {
 
         let currentPage = 0;
         const pages = generateQueueEmbed(queue)
-        const queueEmbed = await message.channel.send(pages[currentPage])
+        const queueEmbed = await message.channel.send(pages[currentPage].setFooter(`Page ${currentPage+1} / ${pages.length}`))
         await queueEmbed.react('⏪')
         await queueEmbed.react('⏩')
 
@@ -49,7 +49,6 @@ module.exports = {
                 .setDescription(`__Now Playing:__\n[${queue.songs[0].name}](${queue.songs[0].url})\n \`${queue.songs[0].formattedDuration} Requested by: ${queue.songs[0].user.tag}\`\n__Up Next:__\n${info}`)
                 .setColor('RANDOM')
                 .addField("\u200B", `**${queue.songs.length} songs in queue | ${queue.formattedDuration} total length**`)
-                .setFooter(`Page ${currentPage+1}/${pages.length}`)
                 pages.push(embed);
             }
             return pages;
