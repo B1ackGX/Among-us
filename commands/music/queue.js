@@ -21,6 +21,7 @@ module.exports = {
         .setDescription(string)
         .setColor('RANDOM')
         .addField("\u200B", `**${queue.songs.length} songs in queue | ${queue.formattedDuration} total length**`)
+        .setFooter('Page 1/1')
 
 
         const pages = generateQueueEmbed(queue)
@@ -35,6 +36,8 @@ module.exports = {
                 const embed = new Discord.MessageEmbed()
                 .setTitle(`**Queue for ${message.guild}**`)
                 .setDescription(`__Now Playing:__\n[${queue.songs[0].name}](${queue.songs[0].url})\n \`${queue.songs[0].formattedDuration} Requested by: ${queue.songs[0].user.tag}\`\n__Up Next:__\n${info}`)
+                .setColor('RANDOM')
+                .addField("\u200B", `**${queue.songs.length} songs in queue | ${queue.formattedDuration} total length**`)
                 pages.push(embed);
             }
             return pages;
