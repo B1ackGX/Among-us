@@ -19,10 +19,10 @@ module.exports = {
         await queueEmbed.react('⏪')
         await queueEmbed.react('⏩')
 
-        const filter = (reaction) => ['⏪', '⏩'].includes(reaction.emoji.name)
+        const filter = (reaction, user) => reaction['⏪', '⏩'].includes(reaction.emoji.name) && !user.bot
         const collector = queueEmbed.createReactionCollector(filter)
 
-        collector.on('collect', (reaction) => {
+        collector.on('collect', reaction => {
             if(reaction.emoji.name === '⏩') {
                 if(currentPage < pages.length-1) {
                     currentPage++;
