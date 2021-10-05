@@ -17,8 +17,7 @@ module.exports = {
         if (!queue) {
             return message.channel.send(`**There is nothing playing!**`)
         }
-        let test = queue.songs.splice(queue.songs.length, 0)
-        console.log(test)
+        queue.songs.splice(queue.songs.length, 1)
         message.channel.send(`💥 **Cleared...** ⏹️`)
     }
 }
