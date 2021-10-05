@@ -13,8 +13,8 @@ module.exports = {
         .setColor('RANDOM')
         );
         
+        const pages = []
         function generateQueueEmbed(queue){
-            const pages = []
             let k = 10;
             for(let i = 0; i < queue.songs.length; i += 10){
                 const current = queue.slice(i, k)
