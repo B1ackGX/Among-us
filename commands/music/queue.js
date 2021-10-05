@@ -15,7 +15,7 @@ module.exports = {
 
         let currentPage = 0;
         const pages = generateQueueEmbed(queue)
-        const queueEmbed = await message.channel.send(pages[currentPage].setFooter(`Page ${currentPage+1} / ${pages.length}`))
+        const queueEmbed = await message.channel.send(pages[currentPage].setFooter(`Page ${currentPage+1} / ${pages.length}`), pages[currentPage])
         await queueEmbed.react('⏪')
         await queueEmbed.react('⏩')
 
@@ -26,12 +26,12 @@ module.exports = {
             if(reaction.emoji.name === '⏩') {
                 if(currentPage < pages.length-1) {
                     currentPage++;
-                    queueEmbed.edit(pages[currentPage])
+                    queueEmbed.edit(pages[currentPage].setFooter(`Page ${currentPage+1} / ${pages.length}`), pages[currentPage])
                 }
             } else if(reaction.emoji.name === '⏪'){
                 if(currentPage !== 0){
                     --currentPage
-                    queueEmbed.edit(pages[currentPage])
+                    queueEmbed.edit(pages[currentPage].setFooter(`Page ${currentPage+1} / ${pages.length}`), pages[currentPage])
                 }
             }
         })
