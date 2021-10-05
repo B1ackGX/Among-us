@@ -18,7 +18,7 @@ module.exports = {
         function generateQueueEmbed(queue){
             const pages = []
             let k = 10;
-            for(let i = 0; i < queue.songs.length; i += 10){
+            for(let i = 1; i < queue.songs.length; i += 11){
                 const current = queue.songs.slice(i, k)
                 let j = i;
                 k += 10;
