@@ -14,8 +14,8 @@ module.exports = {
         .setColor('GREEN')
         )}
         
-        let artist = args.join(" ")
-        let songName = ''
+        let artist = queue.songs[0].info.videoDetails.author.name
+        let songName = queue.songs[0].name
         let pages = []
         let currentPage = 0
 
@@ -23,7 +23,7 @@ module.exports = {
         const reactionFilter = (reaction, user) => reaction['⏪', '⏩'].includes(reaction.emoji.name) && !user.bot
         
         message.channel.send("Please enter the song name now")
-        await message.channel.awaitMessage(messageFilter, { max: 1, time: 15000 }).then(async collected => { 
+        await message.channel.awaitMessages(messageFilter, { max: 1, time: 15000 }).then(async collected => { 
             songName = collected.first().content
             await finder (artist, songName, message, pages)  
         })
