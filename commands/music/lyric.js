@@ -7,26 +7,18 @@ module.exports = {
     description: "Check the song's lyric!",
     run: async (client, message, args) => {
         const queue = client.distube.getQueue(message)
-        if (args.length < 1) {
+        if (!queue) {
         return message.channel.send(new Discord.MessageEmbed()
         .setTitle(`❌ **Missing Songs**`)
         .setDescription(`.lyric [Song Name]`)
         .setColor('GREEN')
         )}
         
-        let artist = queue.songs[0].info.videoDetails.author.name
-        let songName = queue.songs[0].name
         let pages = []
         let currentPage = 0
-
-        const messageFilter = m => m.author.id === message.author.id
+        
         const reactionFilter = (reaction, user) => reaction['⏪', '⏩'].includes(reaction.emoji.name) && !user.bot
         
-        message.channel.send("Please enter the song name now")
-        await message.channel.awaitMessages(messageFilter, { max: 1, time: 15000 }).then(async collected => { 
-            songName = collected.first().content
-            await finder (artist, songName, message, pages)  
-        })
 
         const lyricEmbed = await message.channel.send(pages[currentPage])
         await lyricEmbed.react('⏪')
@@ -47,8 +39,7 @@ module.exports = {
                 }
             }
         })
-        async function finder(artist, songName, message, pages){
-            let fullLyric = await lyricFinder(artist, songName) || 'Not Found!';
+            let fullLyric = await lyricsFinder(" ", `${queue.songs[0].name}`)
             
             for (let i = 0; i < fullLyric.length; i+= 2048) {
                 const lyric = fullLyric.substring(i, Math.min(fullLyric.length, i + 2048))
@@ -57,7 +48,6 @@ module.exports = {
                     .setThumbnail(queue.songs[0].thumbnail)
                     .setColor('GREEN')
                 pages.push(message)
-            }
         }
     }
 }
