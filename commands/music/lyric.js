@@ -2,9 +2,9 @@ const Discord = require('discord.js');
 const lyricFinder = require('lyrics-finder');
 
 module.exports = {
-    name: "queue",
-    aliases: ['q'],
-    description: "Check the current queue!",
+    name: "lyric",
+    aliases: ['l'],
+    description: "Check the song's lyric!",
     run: async (client, message, args) => {
         const queue = client.distube.getQueue(message)
         if (args.length < 1) {
