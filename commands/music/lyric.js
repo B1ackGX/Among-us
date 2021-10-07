@@ -20,7 +20,7 @@ module.exports = {
         const lyrics = await yt.getLyrics(url)
 
         for(let i = 0; i < lyrics.length; i += 2048){
-            let lyric = lyrics.lyrics.substring(i, Math.min(lyrics.lyrics.length, i + 2048))
+            let lyric = lyrics.substring(i, Math.min(lyrics.length, i + 2048))
             let lyricEmbed = new Discord.MessageEmbed()
             .setTitle(`${queue.songs[0].name}`)
             .setDescription(lyric)
