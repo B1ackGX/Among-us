@@ -25,6 +25,7 @@
     "mongoose": "^6.0.8",
     "spotify-to-yt": "^1.0.5",
     "string-progressbar": "^1.0.4",
+    "yt-lirik": "^1.0.0",
     "ytdl-core": "^4.9.1"
   }
 }

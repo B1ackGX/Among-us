@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const lyricFinder = require('lyrics-finder');
+
 
 module.exports = {
     name: "lyric",
@@ -13,13 +13,11 @@ module.exports = {
         .setDescription(`.lyric [Song Name]`)
         .setColor('GREEN')
         )}
-
-        let artist = queue.songs[0].info.videoDetails.author.name
-        let song = queue.songs[0].name
+        
+        const url = queue.songs[0].url
         let pages = []
         let currentPage = 0
-
-        let lyrics = await lyricFinder(artist, song) 
+        const lyrics = await yt.getLyrics(url)
 
         for(let i = 0; i < lyrics.length; i += 2048){
             let lyric = lyrics.substring(i, Math.min(lyrics.length, i + 2048))
