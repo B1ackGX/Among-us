@@ -13,41 +13,42 @@ module.exports = {
         .setDescription(`.lyric [Song Name]`)
         .setColor('GREEN')
         )}
-        
+
+        let artist = queue.songs[0].info.videoDetails.author.name
+        let song = queue.songs[0].name
         let pages = []
         let currentPage = 0
-        
-        const reactionFilter = (reaction, user) => reaction['⏪', '⏩'].includes(reaction.emoji.name) && !user.bot
-        
 
-        const lyricEmbed = await message.channel.send(pages[currentPage])
-        await lyricEmbed.react('⏪')
-        await lyricEmbed.react('⏩')
+        let lyrics = await lyricFinder(singer, song) 
 
-        const collector = lyricEmbed.createReactionCollector(reactionFilter)
+        for(let i = 0; i < lyrics.length; i += 2048){
+            let lyric = lyrics.substring(i, Math.min(lyrics.length, i + 2048))
+            let lyricEmbed = new Discord.MessageEmbed()
+            .setTitle(`${queue.songs[0].name}`)
+            .setDescription(lyric)
+            .setColor('GREEN')
+            pages.push(lyricEmbed)
+            
+        }
+        const reactionFilter = (reaction, user) => ["⏪", "⏩"].include(reaction.emoji.name) && (message.author.id == user.id)
+        const Embed = await message.channel.send(pages[currentPage])
 
-        collector.on('collection', (reaction, user) => {
-            if(reaction.emoji.name === '⏩'){
-                if(currentPage < pages.length-1){
-                    currentPage+=1
-                    lyricEmbed.edit(pages[currentPage])
-                }
-            }else if(reaction.emoji.name === '⏪'){
-                if(currentPage !== 0){
-                    currentPage-=1
-                    lyricEmbed.edit(pages[currentPage])
+        let reactionCollector = Embed.createReactionCollector(reactionFilter)
+
+        reactionCollector.on('collect', (reaction, user) => {
+            if(reaction.emoji.name == '⏩'){
+                if(currentPage < pages.length - 1){
+                    currentPage += 1
+                    Embed.edit(pages[currentPage])
+                } else {
+                    if (reaction.emoji.name == '⏪'){
+                        if(currentPage !== 0){
+                            currentPage -= 1
+                            Embed.edit(pages[currentPage])
+                        }
+                    }
                 }
             }
         })
-            let fullLyric = await lyricsFinder(" ", `${queue.songs[0].name}`)
-            
-            for (let i = 0; i < fullLyric.length; i+= 2048) {
-                const lyric = fullLyric.substring(i, Math.min(fullLyric.length, i + 2048))
-                const message = new Discord.MessageEmbed()
-                    .setDescription(lyric)
-                    .setThumbnail(queue.songs[0].thumbnail)
-                    .setColor('GREEN')
-                pages.push(message)
-        }
     }
 }
