@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-
+const yt = require('yt-lirik');
 
 module.exports = {
     name: "lyric",
