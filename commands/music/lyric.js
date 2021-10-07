@@ -19,7 +19,7 @@ module.exports = {
         let pages = []
         let currentPage = 0
 
-        let lyrics = await lyricFinder(singer, song) 
+        let lyrics = await lyricFinder(artist, song) 
 
         for(let i = 0; i < lyrics.length; i += 2048){
             let lyric = lyrics.substring(i, Math.min(lyrics.length, i + 2048))
