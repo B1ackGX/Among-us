@@ -15,8 +15,8 @@ module.exports = {
         )}
         
         const url = queue.songs[0].url
-        let pages = []
-        let currentPage = 0
+        const pages = []
+        const currentPage = 0
         const lyrics = await yt.getLyrics(url)
 
         for(let i = 0; i < lyrics.length; i += 2048){
