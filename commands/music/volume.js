@@ -11,13 +11,7 @@ module.exports = {
         const volume = parseInt(args[0])
         if (isNaN(volume)) 
         return message.channel.send(`**Please enter a valid number!**`)
-        if(volume >= 100){
-            client.distube.setVolume(message, 100)
-            message.channel.send(`Volume set to \`100\`!`)
-        }
-        else {
         client.distube.setVolume(message, volume)
         message.channel.send(`Volume set to \`${volume}\`!`)
-        }
     }
 }
