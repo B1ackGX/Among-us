@@ -14,7 +14,6 @@ module.exports = {
         .setColor('GREEN')
         )}
         
-        const name = queue.songs[0].name
         let lyrics = await lyricsFinder(args.join(' ')) || "Not Found!";
         let embed = new Discord.MessageEmbed()
         .setTitle(`TEST`)
