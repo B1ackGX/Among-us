@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const lyricsFinder = require('@sujalgoel/lyrics-finder');
+const lyricsFinder = require('lyrics-finder');
 
 module.exports = {
     name: "lyric",
@@ -7,7 +7,8 @@ module.exports = {
     description: "Check the song's lyric!",
     run: async (client, message, args) => {
         const queue = client.distube.getQueue(message)
-        if (!queue) {
+        const Name = args[0]
+        if (!queue && !Name) {
         return message.channel.send(new Discord.MessageEmbed()
         .setTitle(`❌ **Missing Songs**`)
         .setDescription(`.lyric [Song Name]`)
@@ -15,24 +16,11 @@ module.exports = {
         )}
         
         const name = queue.songs[0].name
-        const pages = []
-        const currentPage = 0
-        const lyrics = lyricsFinder.LyricsFinder(name)
-
-        for(let i = 0; i < lyrics.length; i += 2048){
-            let lyric = lyrics.substring(i, Math.min(lyrics.length, i + 2048))
-            const lyricEmbed = new Discord.MessageEmbed()
-            .setTitle(`${queue.songs[0].name}`)
-            .setDescription(lyric)
-            .setColor('GREEN')
-            pages.push(lyricEmbed)
-            
-            if(pages.length <= 1){
-                message.channel.send(lyricEmbed)
-            } else{
-            const emoji = ["⏪", "⏩"]
-            pagination(message, pages, emoji, 60000);
-            }
-        }
+        let lyric = await lyricsFinder(Name.join(' ')) || "Not Found"
+        let embed = new Discord.MessageEmbed()
+        .setTitle(`${name}`)
+        .setDescription(lyric)
+        .setColor('GREEN')
+        message.channel.send(embed)
     }
 }
