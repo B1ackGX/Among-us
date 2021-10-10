@@ -15,10 +15,10 @@ module.exports = {
         )}
         
         const name = queue.songs[0].name
-        let lyric = await lyricsFinder(args[0].join(' ')) || "Not Found"
+        let lyrics = await lyricsFinder(args.join(' ')) || "Not Found!";
         let embed = new Discord.MessageEmbed()
         .setTitle(`${name}`)
-        .setDescription(lyric)
+        .setDescription(lyrics)
         .setColor('GREEN')
         message.channel.send(embed)
     }
