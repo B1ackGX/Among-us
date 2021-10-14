@@ -20,7 +20,7 @@ module.exports = {
                 .setDescription(`.seek 2:00`)
                 .setColor('RANDOM')
             )
-        client.distube.seek(Time)
+        client.distube.seek(message, Time)
         message.channel.send(`🎵 **Set position to** \`${time}\` ⏩`)
     }
 }
