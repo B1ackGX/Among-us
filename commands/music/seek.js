@@ -20,7 +20,7 @@ module.exports = {
                 .setDescription(`.seek 2:00`)
                 .setColor('RANDOM')
             )
-        if(Time >= queue.songs[0].formattedDuration){
+        if(Time >= queue.songs[0].duration){
             client.distube.skip(message)
         }
         client.distube.seek(message, Time)
