@@ -21,9 +21,6 @@ module.exports = {
                 .setColor('RANDOM')
             )
         client.distube.seek(message, Time)
-        client.distube.resume(message)
-        client.distube.pause(message)
-        client.distube.resume(message)
         message.channel.send(`🎵 **Set position to** \`${time}\` ⏩`)
     }
 }
