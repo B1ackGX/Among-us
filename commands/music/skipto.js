@@ -18,7 +18,7 @@ module.exports = {
         const queue = client.distube.getQueue(message)
         if (!queue) 
             return message.channel.send(`❌ **There is nothing in the queue right now!**`)
-        if (!qo){
+        if (!qo || isNaN(qo)){
             return message.channel.send('❌ **Plese give me a song number!**')
         }
         message.channel.send(`⏩ **Skipped to** \`${queue.songs[qo].name}\``)
