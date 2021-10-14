@@ -20,10 +20,6 @@ module.exports = {
                 .setDescription(`.seek 2:00`)
                 .setColor('RANDOM')
             )
-        if(Time >= queue.songs[0].duration){
-            client.distube.skip(message)
-            return message.channel.send(`⏩ **Skipped!**`)
-        }
         client.distube.seek(message, Time)
         client.distube.resume(message)
         client.distube.pause(message)
