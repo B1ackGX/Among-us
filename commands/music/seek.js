@@ -22,6 +22,7 @@ module.exports = {
             )
         if(Time >= queue.songs[0].duration){
             client.distube.skip(message)
+            return message.channel.send(`⏩ **Skipped!**`)
         }
         client.distube.seek(message, Time)
         client.distube.resume(message)
