@@ -102,17 +102,4 @@ client.on("message", async message => {
         message.channel.send("An error encountered: " + e);
     });
 
-client.on('voiceStateUpdate', (oldState) => {
-
-    if(client.distube.queue.playing)
-    return;
-    
-    if (!oldState.channel.members.size - 1) 
-        setTimeout(() => {
-    if (!oldState.channel.members.size - 1)
-        oldState.channel.leave();
-        message.channel.send('Disconnected due to inactivity.')
-   }, 300000);
-})
-
 client.login(process.env.token);
