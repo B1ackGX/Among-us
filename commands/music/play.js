@@ -33,7 +33,7 @@ module.exports = {
                 client.distube.play(message, result.url)
             } else if(music.toLowerCase().includes("spotify") && music.toLowerCase().includes("playlist")){
                 const result = await spotifyToYT.playListGet(music)
-                client.distube.playCustomPlaylist(message, result.songs).catch(e => console.error(e))
+                client.distube.playCustomPlaylist(message, result.songs)
             } else{
                 client.distube.play(message, music);
             }
