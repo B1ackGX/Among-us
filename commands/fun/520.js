@@ -11,5 +11,6 @@ module.exports = {
         .setImage('https://c.tenor.com/Gpg2Fv5w_V8AAAAM/heart-anime.gif')
         .setcolor('PURPLE')
         .setTimestamp()
+        message.channel.send(embed)
     }
 }
