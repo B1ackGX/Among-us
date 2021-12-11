@@ -15,7 +15,11 @@ module.exports = {
         return message.channel.send("You can't slap yourself!")
 
         images = [
-            
+            'https://c.tenor.com/L0U84S9YTrYAAAAC/pikachu-slap.gif',
+            'https://c.tenor.com/wOCOTBGZJyEAAAAC/chikku-neesan-girl-hit-wall.gif',
+            'https://c.tenor.com/Sp7yE5UzqFMAAAAS/spank-slap.gif',
+            'https://c.tenor.com/ra17G61QRQQAAAAC/tapa-slap.gif',
+            'https://c.tenor.com/CAesvxP0KyEAAAAd/shinobu-kocho-giyuu-tomioka.gif'
         ]
 
         let embed = new Discord.MessageEmbed()
