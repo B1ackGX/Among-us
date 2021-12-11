@@ -13,16 +13,28 @@ module.exports = {
         .setTimestamp()
         message.channel.send(embed).then(msg => {
             setTimeout(function(){ 
-                message.channel.send('黄诗萍我余生都会爱你\n 这一辈子我都想和你在一起\n 不离不弃\n ❤️爱你❤️').then(msg =>{
+                message.channel.send('黄诗萍我余生都会爱你').then(msg =>{
                     setTimeout(function(){ 
-                        message.channel.send(new discord.MessageEmbed()
-                        .setImage('https://c.tenor.com/7T1cuiOtJvQAAAAC/anime-kiss.gif')
-                        .setColor('PURPLE')
-                        .setTimestamp()
-        )
-                    }, 3000);
+                        message.channel.send('这一辈子我都想和你在一起').then(msg =>{
+                            setTimeout(function(){ 
+                                message.channel.send('不离不弃').then(msg =>{
+                                    setTimeout(function(){ 
+                                        message.channel.send('❤️爱你❤️').then(msg =>{
+                                            setTimeout(function(){ 
+                                                message.channel.send(new discord.MessageEmbed()
+                                                .setImage('https://c.tenor.com/7T1cuiOtJvQAAAAC/anime-kiss.gif')
+                                                .setColor('PURPLE')
+                                                .setTimestamp()
+                                )
+                                            }, 1000);
+                                        })
+                                    }, 1000)
+                                })
+                            }, 1000)
+                        })
+                    }, 1000);
                 })
-            }, 3000);
+            }, 1000);
         })
     }
 }
