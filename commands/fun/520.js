@@ -6,11 +6,11 @@ module.exports = {
     description: "520黄诗萍",
     run: async (client, message, args) => {
 
-        let embed = new discord.MessageEmbed()
+        message.channel.send(new discord.MessageEmbed()
         .setTitle('❤️黄诗萍我爱你❤️')
         .setImage('https://c.tenor.com/Gpg2Fv5w_V8AAAAM/heart-anime.gif')
         .setcolor('PURPLE')
         .setTimestamp()
-        message.channel.send(embed)
+        )
     }
 }
