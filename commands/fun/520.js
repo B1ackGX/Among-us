@@ -21,16 +21,64 @@ module.exports = {
                                     setTimeout(function(){ 
                                         message.channel.send('❤️爱你❤️').then(msg =>{
                                             setTimeout(function(){ 
-                                                message.channel.send(new discord.MessageEmbed()
-                                                .setImage('https://c.tenor.com/7T1cuiOtJvQAAAAC/anime-kiss.gif')
-                                                .setColor('PURPLE')
-                                                .setTimestamp()
-                                )
+                                                message.channel.send('-----$$$$---------$$$$').then(msg =>{
+                                                    setTimeout(function(){
+                                                        message.channel.send('---$$$$$$$$-----$$$$$$$$').then(msg =>{
+                                                            setTimeout(function(){
+                                                                message.channel.send('-$$$$$$$$$$$$-$$$$$$$$$$$$').then(msg =>{
+                                                                    setTimeout(function(){
+                                                                        message.channel.send('$$$$$$$$$$$$$$$$$$$$$$$$$$$').then(msg =>{
+                                                                            setTimeout(function(){
+                                                                                message.channel.send('$$$$$$$$$$$$$$$$$$$$$$$$$$$').then(msg =>{
+                                                                                    setTimeout(function(){
+                                                                                        message.channel.send('-$$$$$$$$$$$$$$$$$$$$$$$$$').then(msg =>{
+                                                                                            setTimeout(function(){
+                                                                                                message.channel.send('--$$$$$$$$$$$$$$$$$$$$$$$').then(msg =>{
+                                                                                                    setTimeout(function(){
+                                                                                                        message.channel.send('----$$$$$$$$$$$$$$$$$$$').then(msg =>{
+                                                                                                            setTimeout(function(){
+                                                                                                                message.channel.send('-------$$$$$$$$$$$$$').then(msg =>{
+                                                                                                                    setTimeout(function(){
+                                                                                                                        message.channel.send('-----------$$$$$$$').then(msg =>{
+                                                                                                                            setTimeout(function(){
+                                                                                                                                message.channel.send('------------$$$').then(msg =>{
+                                                                                                                                    setTimeout(function(){
+                                                                                                                                        message.channel.send('-------------$').then(msg =>{
+                                                                                                                                            setTimeout(function(){
+                                                                                                                                                let embed2 = new discord.MessageEmbed()
+                                                                                                                                                .setImage('https://c.tenor.com/7T1cuiOtJvQAAAAC/anime-kiss.gif')
+                                                                                                                                                .setColor('PURPLE')
+                                                                                                                                                .setTimestamp()
+                                                                                                                                                message.channel.send(embed2)
+                                                                                                                                            }, 1000)
+                                                                                                                                        })
+                                                                                                                                    }, 1000)
+                                                                                                                                })
+                                                                                                                            }, 1000);
+                                                                                                                        }) 
+                                                                                                                    }, 1000);
+                                                                                                                })
+                                                                                                            }, 1000);
+                                                                                                        })
+                                                                                                    }, 1000);
+                                                                                                })
+                                                                                            }, 1000);
+                                                                                        })
+                                                                                    }, 1000);
+                                                                                })
+                                                                            }, 1000);
+                                                                        })
+                                                                    }, 1000);
+                                                                })
+                                                            }, 1000);
+                                                        })
+                                                    }, 1000);
+                                                })
                                             }, 1000);
                                         })
-                                    }, 1000)
+                                    }, 1000);
                                 })
-                            }, 1000)
+                            }, 1000);
                         })
                     }, 1000);
                 })
