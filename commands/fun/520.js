@@ -48,6 +48,7 @@ module.exports = {
                                                                                                                                                 let embed2 = new discord.MessageEmbed()
                                                                                                                                                 .setImage('https://c.tenor.com/7T1cuiOtJvQAAAAC/anime-kiss.gif')
                                                                                                                                                 .setColor('PURPLE')
+                                                                                                                                                .setFooter('❤️你是我唯一❤️')
                                                                                                                                                 .setTimestamp()
                                                                                                                                                 message.channel.send(embed2)
                                                                                                                                             }, 1000)
