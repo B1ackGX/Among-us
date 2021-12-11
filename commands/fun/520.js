@@ -39,11 +39,11 @@ module.exports = {
                                                                                                             setTimeout(function(){
                                                                                                                 message.channel.send('-------$$$$$$$$$$$$$').then(msg =>{
                                                                                                                     setTimeout(function(){
-                                                                                                                        message.channel.send('-----------$$$$$$$').then(msg =>{
+                                                                                                                        message.channel.send('-------------$$$$$$$').then(msg =>{
                                                                                                                             setTimeout(function(){
-                                                                                                                                message.channel.send('-------------$$$').then(msg =>{
+                                                                                                                                message.channel.send('----------------$$$').then(msg =>{
                                                                                                                                     setTimeout(function(){
-                                                                                                                                        message.channel.send('--------------$').then(msg =>{
+                                                                                                                                        message.channel.send('-----------------$').then(msg =>{
                                                                                                                                             setTimeout(function(){
                                                                                                                                                 let embed2 = new discord.MessageEmbed()
                                                                                                                                                 .setImage('https://c.tenor.com/7T1cuiOtJvQAAAAC/anime-kiss.gif')
