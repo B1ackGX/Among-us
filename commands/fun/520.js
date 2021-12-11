@@ -15,7 +15,7 @@ module.exports = {
             setTimeout(function(){ 
                 message.channel.send('黄诗萍我余生都会爱你').then(msg =>{
                     setTimeout(function(){ 
-                        message.channel.send('这一辈子我都想和你在一起').then(msg =>{
+                        message.channel.send('这一辈子我只想和你在一起').then(msg =>{
                             setTimeout(function(){ 
                                 message.channel.send('不离不弃').then(msg =>{
                                     setTimeout(function(){ 
@@ -41,9 +41,9 @@ module.exports = {
                                                                                                                     setTimeout(function(){
                                                                                                                         message.channel.send('-----------$$$$$$$').then(msg =>{
                                                                                                                             setTimeout(function(){
-                                                                                                                                message.channel.send('------------$$$').then(msg =>{
+                                                                                                                                message.channel.send('-------------$$$').then(msg =>{
                                                                                                                                     setTimeout(function(){
-                                                                                                                                        message.channel.send('-------------$').then(msg =>{
+                                                                                                                                        message.channel.send('--------------$').then(msg =>{
                                                                                                                                             setTimeout(function(){
                                                                                                                                                 let embed2 = new discord.MessageEmbed()
                                                                                                                                                 .setImage('https://c.tenor.com/7T1cuiOtJvQAAAAC/anime-kiss.gif')
