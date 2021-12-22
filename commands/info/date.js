@@ -7,6 +7,7 @@ module.exports = {
     run: async (client, message, args) => {
         const date1 = date.format(now, 'MM/DD/YYYY')
         const date2 = new Date(12/21/2021)
+        const now = new Date()
         if(date.isSameDay(date1, date2)){
             message.channel.send("Date Test")
         } else {
