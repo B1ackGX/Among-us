@@ -10,7 +10,7 @@ module.exports = {
         if(date.isSameDay(date1, date2)){
             message.channel.send("Date Test")
         } else {
-            return
+            return message.channel.send("False Date Test")
         }
     }
 }   
