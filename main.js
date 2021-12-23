@@ -22,7 +22,7 @@ client.aliases = new Collection();
 client.on("ready", () => {
     console.log(`AMONG US!`);
     client.user.setActivity(`AMONG US!`) 
-   schedule.scheduleJob("11 23 * * *", () => {
+   schedule.scheduleJob("20 23 * * *", () => {
     console.log("test")
    })
 })
