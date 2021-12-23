@@ -15,7 +15,7 @@ let Christmas = new Discord.MessageEmbed()
 .setDescription('❤️Hope you guys have a wonderful Christmas!❤️')
 .setImage('https://c.tenor.com/INPIhJNeVP8AAAAC/anime.gif')
 .setColor('RED')
-.setTimestamp
+.setTimestamp()
 .setFooter('By: Alfred')
 
 // Collections
