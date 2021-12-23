@@ -17,6 +17,7 @@ let Christmas = new Discord.MessageEmbed()
 .setColor('RED')
 .setTimestamp()
 .setFooter('By: Alfred')
+const channel01 = client.channels.cache.find(channel => channel.id === "857018025152086017")
 
 // Collections
 client.commands = new Collection();
@@ -30,8 +31,8 @@ client.aliases = new Collection();
 client.on("ready", () => {
     console.log(`AMONG US!`);
     client.user.setActivity(`AMONG US!`) 
-   schedule.scheduleJob("00 08 23 12 *", () => {
-    console.log("test")
+   schedule.scheduleJob("00 08 25 12 *", () => {
+    channel01.send(Christmas);
    })
 })
 
