@@ -8,6 +8,8 @@ const client = new Client({
 })
 const distube = new DisTube(client, { searchSongs: false, emitNewSongOnly: true, youtubeCookie: cookie, updateYouTubeDL: false})
 client.distube = distube;
+const schedule = require('node-schedule');
+const date = new Date(2021, 11, 22, 23, 00, 0);
 
 // Collections
 client.commands = new Collection();
@@ -20,8 +22,10 @@ client.aliases = new Collection();
 
 client.on("ready", () => {
     console.log(`AMONG US!`);
-
     client.user.setActivity(`AMONG US!`) 
+    const job = schedule.scheduleJob(date, function(){
+        console.log('The world is going to end today.');
+      });
 })
 
 client.on('guildMemberAdd', member => {
