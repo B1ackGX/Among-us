@@ -10,6 +10,14 @@ const distube = new DisTube(client, { searchSongs: false, emitNewSongOnly: true,
 client.distube = distube;
 const schedule = require('node-schedule');
 
+let Christmas = new Discord.MessageEmbed()
+.setTitle('🎄**Merry Chirstmas!**🎄')
+.setDescription('❤️Hope you guys have a wonderful Christmas!❤️')
+.setImage('https://c.tenor.com/INPIhJNeVP8AAAAC/anime.gif')
+.setColor('RED')
+.setTimestamp
+.setFooter('By: Alfred')
+
 // Collections
 client.commands = new Collection();
 client.aliases = new Collection();
@@ -22,7 +30,7 @@ client.aliases = new Collection();
 client.on("ready", () => {
     console.log(`AMONG US!`);
     client.user.setActivity(`AMONG US!`) 
-   schedule.scheduleJob("22 07 * * *", () => {
+   schedule.scheduleJob("00 08 23 12 *", () => {
     console.log("test")
    })
 })
