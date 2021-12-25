@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 
 module.exports = {
-    name: "Christmas",
+    name: "christmas",
     category: "fun",
     description: "Eject another user!",
     run: async (client, message, args) => {
