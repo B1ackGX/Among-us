@@ -18,7 +18,7 @@ let Christmas = new Discord.MessageEmbed()
 .setTimestamp()
 .setFooter('By: Alfred')
 const channel01 = client.channels.cache.find(channel => channel.id === "857012340411465750")
-let everyone = msg.guild.defaultRole;
+let everyone = message.guild.defaultRole;
 
 // Collections
 client.commands = new Collection();

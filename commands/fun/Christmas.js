@@ -13,7 +13,7 @@ module.exports = {
         .setTimestamp()
         .setFooter('By: Alfred')
 
-        let everyone = msg.guild.defaultRole;
+        let everyone = message.guild.defaultRole;
         
         message.channel.send(everyone.toString()).then(() =>{
             setTimeout(function() {
