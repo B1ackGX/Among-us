@@ -12,10 +12,8 @@ module.exports = {
         .setColor('RED')
         .setTimestamp()
         .setFooter('By: Alfred')
-
-        let everyone = message.guild.defaultRole;
         
-        message.channel.send(everyone.toString()).then(() =>{
+        message.channel.send("@everyone").then(() =>{
             setTimeout(function() {
                 message.channel.send(Christmas)
             }, 1000)

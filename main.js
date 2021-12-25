@@ -18,7 +18,6 @@ let Christmas = new Discord.MessageEmbed()
 .setTimestamp()
 .setFooter('By: Alfred')
 const channel01 = client.channels.cache.find(channel => channel.id === "857012340411465750")
-let everyone = message.guild.defaultRole;
 
 // Collections
 client.commands = new Collection();
@@ -33,7 +32,7 @@ client.on("ready", () => {
     console.log(`AMONG US!`);
     client.user.setActivity(`AMONG US!`) 
    schedule.scheduleJob("00 08 25 12 *", () => {
-    channel01.send(everyone.toString()).then(() =>{
+    channel01.send("@everyone").then(() =>{
         setTimeout(function () {
            channel01.send(Christmas) 
         }, 1000);
