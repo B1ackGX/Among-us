@@ -26,6 +26,6 @@
     "node-schedule": "^2.1.0",
     "spotify-to-yt": "^1.0.5",
     "string-progressbar": "^1.0.4",
-    "ytdl-core": "^4.9.1"
+    "ytdl-core": "^4.9.2"
   }
 }
