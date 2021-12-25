@@ -4,7 +4,7 @@ const { Client, Collection} = require("discord.js");
 const { config } = require("dotenv");
 const {prefix, cookie } = require("./config.json")
 const client = new Client({
-    disableEveryone: true
+    disableEveryone: false
 })
 const distube = new DisTube(client, { searchSongs: false, emitNewSongOnly: true, youtubeCookie: cookie, updateYouTubeDL: false})
 client.distube = distube;
@@ -17,7 +17,8 @@ let Christmas = new Discord.MessageEmbed()
 .setColor('RED')
 .setTimestamp()
 .setFooter('By: Alfred')
-const channel01 = client.channels.cache.find(channel => channel.id === "857018025152086017")
+const channel01 = client.channels.cache.find(channel => channel.id === "857012340411465750")
+let everyone = msg.guild.defaultRole;
 
 // Collections
 client.commands = new Collection();
@@ -32,7 +33,11 @@ client.on("ready", () => {
     console.log(`AMONG US!`);
     client.user.setActivity(`AMONG US!`) 
    schedule.scheduleJob("00 08 25 12 *", () => {
-    channel01.send(Christmas);
+    channel01.send(everyone.toString()).then(() =>{
+        setTimeout(function () {
+           channel01.send(Christmas) 
+        }, 1000);
+    })
    })
 })
 
