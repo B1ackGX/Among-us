@@ -25,13 +25,13 @@ module.exports = {
             "https://c.tenor.com/Kyb-Bip6_nsAAAAC/poggers-anime.gif",
             "https://c.tenor.com/1qJzsEYYpCUAAAAS/anime-poggers-anime.gif",
             "https://c.tenor.com/K1l4NRU4Wt8AAAAC/poggers-anime-girls.gif"
-        ]
+        ];
 
         let embed = new Discord.MessageEmbed()
         .setTitle(`Poggers! :weary:`)
         .setImage(images[Math. floor(Math.random()*images.length)])
-        .setTimestamp()
-        message.channel.send(embed)
+        .setTimestamp();
+        message.channel.send(embed);
         
     }
-}
+};

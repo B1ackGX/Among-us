@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const { prefix } = require('../../config.json');
-const spotifyToYT = require("spotify-to-yt")
-const {Spotify, YouTube} = require('./emoji.json')
+const spotifyToYT = require("spotify-to-yt");
+const {Spotify, YouTube} = require('./emoji.json');
 
 module.exports = {
     name: "play",
@@ -10,11 +10,11 @@ module.exports = {
     run: async (client, message, args) => {
         const music = args.join(" ");
         try{
-            const queue = client.distube.getQueue(message)
+            const queue = client.distube.getQueue(message);
             if(!message.member.voice.channel)
                 return message.channel.send('❌ **Please join a voice channel!**');
-            if(client.distube.isPlaying(message) && message.member.voice.channel != message.guild.me.voice.channel)
-                return message.channel.send('❌ **You are not in the same voice channel as I am!**')
+            if(client.distube.playing && message.member.voice.channel != message.guild.me.voice.channel)
+                return message.channel.send('❌ **You are not in the same voice channel as I am!**');
             if(!music)
                 return message.channel.send(new Discord.MessageEmbed()
                     .setColor('#E74C3C')
@@ -28,18 +28,14 @@ module.exports = {
             }else{
                 message.channel.send(`🔎 **Searching** 🎵 \`${music}\``);
             }
-            if (music.toLowerCase().includes("spotify") && music.toLowerCase().includes("track")){
-                const result = await spotifyToYT.trackGet(music)
-                client.distube.play(message, result.url)
-            } else if(music.toLowerCase().includes("spotify") && music.toLowerCase().includes("playlist")){
-                const result = await spotifyToYT.playListGet(music)
-                client.distube.playCustomPlaylist(message, result.songs)
-            } else{
-                client.distube.play(message, music);
-            }
+			client.distube.play(message.member.voice.channel, music, {
+      			member: message.member,
+      			textChannel: message.channel,
+      			message
+    			});
         } catch(e) {
             console.log(e);
-            return message.channel.send('❌ **No Matches**')
+            return message.channel.send('❌ **No Matches**');
         }
     }
-}
+};

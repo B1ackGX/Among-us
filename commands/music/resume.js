@@ -8,19 +8,17 @@ module.exports = {
         if(!message.member.voice.channel){
             return message.channel.send('❌ **Please join the voice channel!**');
         }
-        if(client.distube.isPlaying(message) && message.member.voice.channel != message.guild.me.voice.channel){
-            return message.channel.send('❌ **You are not in the same voice channel as I am!**')
+        if(client.distube.playing && message.member.voice.channel != message.guild.me.voice.channel){
+            return message.channel.send('❌ **You are not in the same voice channel as I am!**');
         }
-        const queue = client.distube.getQueue(message)
+        const queue = client.distube.getQueue(message);
         if(!queue){
-            message.channel.send('❌ **There is nothing in the queue right now!**')
+            message.channel.send('❌ **There is nothing in the queue right now!**');
         }
         if(client.distube.isPlaying(message) === true){
-            message.channel.send('❌ **It is not on pause!**')
+            message.channel.send('❌ **It is not on pause!**');
         } 
-        client.distube.resume(message)
-        client.distube.pause(message)
-        client.distube.resume(message)
-        message.channel.send('⏯ **Resuming**')
+        queue.resume();
+        message.channel.send('⏯ **Resuming**');
     }
-}
+};

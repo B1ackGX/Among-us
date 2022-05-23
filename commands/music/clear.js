@@ -4,20 +4,21 @@ module.exports = {
     name: "clear",
     description: "clear the whole queue",
     run: async (client, message, args) => {
-        const queue = client.distube.getQueue(message)
+        const queue = client.distube.getQueue(message);
         if(!message.member.voice.channel){
             return message.channel.send('❌ **Please join the voice channel!**');
         }
         if (!message.guild.me.voice.channel) {
-            message.channel.send('❌ **I am not connected to a voice channel.** \`Use .join to get me in\`')
+            message.channel.send('❌ **I am not connected to a voice channel.** \`Use .join to get me in\`');
         }
-        if(client.distube.isPlaying(message) && message.member.voice.channel != message.guild.me.voice.channel){
-            return message.channel.send('❌ **You are not in the same voice channel as I am!**')
+        if(client.distube.playing && message.member.voice.channel != message.guild.me.voice.channel){
+            return message.channel.send('❌ **You are not in the same voice channel as I am!**');
         }
         if (!queue) {
-            return message.channel.send(`**There is nothing playing!**`)
+            return message.channel.send(`**There is nothing playing!**`);
         }
-        queue.songs.splice(queue.songs.length, 1)
-        message.channel.send(`💥 **Cleared...** ⏹️`)
+        queue.songs.splice(0, queue.songs.length);
+        client.distube.stop(message);
+        message.channel.send(`💥 **Cleared...** ⏹️`);
     }
-}
+};

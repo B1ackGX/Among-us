@@ -11,12 +11,12 @@ module.exports = {
         .setImage('https://c.tenor.com/INPIhJNeVP8AAAAC/anime.gif')
         .setColor('RED')
         .setTimestamp()
-        .setFooter('By: Alfred')
+        .setFooter('By: Alfred');
         
         message.channel.send("@everyone").then(() =>{
             setTimeout(function() {
-                message.channel.send(Christmas)
-            }, 1000)
-        })
+                message.channel.send(Christmas);
+            }, 1000);
+        });
     }
-}
+};

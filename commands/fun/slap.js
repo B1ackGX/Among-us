@@ -9,10 +9,10 @@ module.exports = {
     run: async (client, message, args) => {
         let target = message.mentions.members.first();
         if(!target)
-        return message.channel.send('You need to choose to a user to slap them!')
+        return message.channel.send('You need to choose to a user to slap them!');
 
         if (target.id === message.author.id)
-        return message.channel.send("You can't slap yourself!")
+        return message.channel.send("You can't slap yourself!");
 
         images = [
             'https://c.tenor.com/L0U84S9YTrYAAAAC/pikachu-slap.gif',
@@ -23,13 +23,13 @@ module.exports = {
             'https://c.tenor.com/FaXcxpmU3PMAAAAC/anime-slap.gif',
             'https://c.tenor.com/Irk80uToJA0AAAAC/slap-anime.gif',
             'https://c.tenor.com/2HjyotNxqiAAAAAC/cass-will.gif'
-        ]
+        ];
 
         let embed = new Discord.MessageEmbed()
         .setTitle(`You slap ${target.displayName} :hand_splayed:`)
         .setImage(images[Math. floor(Math.random()*images.length)])
-        .setTimestamp()
-        message.channel.send(embed)
+        .setTimestamp();
+        message.channel.send(embed);
         
     }
-}
+};

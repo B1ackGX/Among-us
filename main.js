@@ -1,24 +1,36 @@
-const DisTube = require("distube")
-const Discord = require('discord.js')
+const { DisTube } = require("distube");
+const { SpotifyPlugin } = require('@distube/spotify');
+const { SoundCloudPlugin } = require('@distube/soundcloud');
+const { YtDlpPlugin } = require('@distube/yt-dlp');
+const Discord = require('discord.js');
 const { Client, Collection} = require("discord.js");
 const { config } = require("dotenv");
-const {prefix, cookie } = require("./config.json")
+const {cookie, token } = require("./config.json");
 const client = new Client({
     disableEveryone: false
-})
-const distube = new DisTube(client, { searchSongs: false, emitNewSongOnly: true, youtubeCookie: cookie, updateYouTubeDL: false})
-client.distube = distube;
-const schedule = require('node-schedule');
+});
+const Prefix = require('discord-prefix');
+let defaultPrefix = '.';
 
-let Christmas = new Discord.MessageEmbed()
-.setTitle('🎄**Merry Chirstmas!**🎄')
-.setDescription('❤️Hope you guys have a wonderful Christmas!❤️')
-.setImage('https://c.tenor.com/INPIhJNeVP8AAAAC/anime.gif')
-.setColor('RED')
-.setTimestamp()
-.setFooter('By: Alfred')
-const channel01 = client.channels.cache.find(channel => channel.id === "857012340411465750")
-
+client.distube = new DisTube(client, {
+    leaveOnStop: false,
+    searchSongs: 0,
+    emitNewSongOnly: true,
+    leaveOnFinish: true,
+    emptyCooldown: 300,
+    nsfw: true,
+    emitAddSongWhenCreatingQueue: false,
+    emitAddListWhenCreatingQueue: false,
+    youtubeCookie: cookie,
+    plugins: [
+      new SpotifyPlugin({
+		emitEventsAfterFetching: true
+      }),
+        new SoundCloudPlugin(),
+        new YtDlpPlugin()
+    ],
+    youtubeDL: false
+  });
 // Collections
 client.commands = new Collection();
 client.aliases = new Collection();
@@ -30,23 +42,19 @@ client.aliases = new Collection();
 
 client.on("ready", () => {
     console.log(`AMONG US!`);
-    client.user.setActivity(`AMONG US!`) 
-   schedule.scheduleJob("00 08 25 12 *", () => {
-    channel01.send("@everyone").then(() =>{
-        setTimeout(function () {
-           channel01.send(Christmas) 
-        }, 1000);
-    })
-   })
-})
-
-client.on('guildMemberAdd', member => {
-    member.send('**' + member.user.username + '** Welcome to the server!');
+    client.user.setActivity(`AMONG US!`);
 });
 
 client.on("message", async message => {
-   
-
+	//Stop the code if its in DM
+    if(!message.guild) return;
+    
+    //get the Prefix for the Discord server
+    let prefix = Prefix.getPrefix(message.guild.id);
+    
+    //set to default Prefix if there isn't any
+    if (!prefix) prefix = defaultPrefix;
+    
     if (message.author.bot) return;
     if (!message.guild) return;
     if (!message.content.startsWith(prefix)) return;
@@ -70,40 +78,42 @@ client.on("message", async message => {
 });
     
     client.distube
-    .on("playSong", (message, queue, song) => {
-    if(queue.songs[0] && queue.songs.length === 1){
-        message.channel.send(`**Playing**:notes: \`${song.name}\` - Now! `)
+    .on("playSong", (queue, song) => {
+    if (song.playlist){
+        queue.textChannel.send(new Discord.MessageEmbed()
+    .setTitle('**Playlist added to queue**')
+    .setDescription(`${song.playlist.name}`)
+    .setThumbnail(`${song.playlist.thumbnail}`)
+    .addFields(
+    { name: '**Estimated Time until playing**', value: `Now`},
+    { name: '**Position in queue**', value: "Now", inline: true},
+    { name: '**Enqueued**', value: `\`${queue.songs.length}\` songs`, inline: true}
+    ));
+    } else {
+        if(queue.songs[0] && queue.songs.length === 1){
+        queue.textChannel.send(`**Playing**:notes: \`${song.name}\` - Now! `);
         if(queue.songs[1]){
-            return
+            return;
         }
     } else {
-        return
+        return;
+    }
     }
     })
-    .on("addSong", (message, queue, song) => message.channel.send(new Discord.MessageEmbed()
+    .on('addSong', (queue, song) => queue.textChannel.send(new Discord.MessageEmbed()
     .setTitle('**Added to queue**')
     .setDescription(`[${song.name}](${song.url})`)
     .setThumbnail(`${song.thumbnail}`)
     .addFields(
-    { name: '**Channel**', value: `${song.info.videoDetails.author.name}`, inline: true},
+    { name: '**Channel**', value: `${song.uploader.name}`, inline: true},
     { name: '**Song Duration**', value: `${song.formattedDuration}`, inline: true},
     { name: '**Estimated Time Until Playing**', value: `${queue.formattedDuration}`, inline: true},
     { name: '**Position in Queue**', value: `${queue.songs.length - 1}`})
     ))
-    .on("playList", (message, queue, playlist) => message.channel.send(new Discord.MessageEmbed()
+    .on('addList', (queue, playlist) => queue.textChannel.send(new Discord.MessageEmbed()
     .setTitle('**Playlist added to queue**')
     .setDescription(`${playlist.name}`)
-    .setThumbnail(`${playlist.thumbnail.url}`)
-    .addFields(
-    { name: '**Estimated Time until playing**', value: `Now`},
-    { name: '**Position in queue**', value: "Now", inline: true},
-    { name: '**Enqueued**', value: `\`${playlist.songs.length}\` songs`, inline: true}
-    )
-    ))
-    .on("addList", (message, queue, playlist) => message.channel.send(new Discord.MessageEmbed()
-    .setTitle('**Playlist added to queue**')
-    .setDescription(`${playlist.name}`)
-    .setThumbnail(`${playlist.thumbnail.url}`)
+    .setThumbnail(`${playlist.thumbnail}`)
     .addFields(
     { name: '**Estimated Time until playing**', value: `${queue.formattedDuration}`},
     { name: '**Position in queue**', value: `${queue.songs.length -1 }`, inline: true},
@@ -113,9 +123,10 @@ client.on("message", async message => {
     .on("initQueue", queue => {
         queue.autoplay = false;
     })
-    .on("error", (message, e) => {
-        console.error(e)
-        message.channel.send("An error encountered: " + e);
-    });
+    .on('error', (channel, error) => {
+    channel.send("An error encountered: " + error);
+    console.error(error);
+  	});
 
-client.login(process.env.token);
+client.login(token);
+client.dbLogin

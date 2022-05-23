@@ -7,10 +7,10 @@ module.exports = {
     run: async (client, message, args) => {
         let target = message.mentions.members.first();
         if(!target)
-        return message.channel.send('You need to choose to a user to hug!')
+        return message.channel.send('You need to choose to a user to hug!');
 
         if (target.id === message.author.id)
-        return message.channel.send("You can't hug yourself!")
+        return message.channel.send("You can't hug yourself!");
         images = [
             "https://c.tenor.com/gowinK__PvAAAAAC/anime-cuddle.gif",
             "https://i.imgur.com/IAxUnda.gif?noredirect",
@@ -21,12 +21,12 @@ module.exports = {
             "https://thumbs.gfycat.com/FrenchShimmeringAmericanmarten-size_restricted.gif",
             "https://c.tenor.com/9e1aE_xBLCsAAAAC/anime-hug.gif",
             "https://c.tenor.com/pcULC09CfkgAAAAC/hug-anime.gif"
-        ]
+        ];
 
         let embed = new discord.MessageEmbed()
         .setTitle(`You hug ${target.displayName} :heart:`)
         .setImage(images[Math. floor(Math.random()*images.length)])
-        .setTimestamp()
-        message.channel.send(embed)
+        .setTimestamp();
+        message.channel.send(embed);
     }
-}
+};

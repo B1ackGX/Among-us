@@ -6,7 +6,7 @@ module.exports = {
     aliases: ['q'],
     description: "Check the current queue!",
     run: async (client, message, args) => {
-        const queue = client.distube.getQueue(message)
+        const queue = client.distube.getQueue(message);
         if (!queue) return message.channel.send(new Discord.MessageEmbed()
         .setTitle(`**Queue for ${message.guild}**`)
         .setDescription(`__Now Playing:__\nNothing Playing!`)
@@ -14,21 +14,21 @@ module.exports = {
         );
         
         let string = "";
-        if(queue.songs[0]) string += `__Now Playing:__\n [${queue.songs[0].name}](${queue.songs[0].url})\n \`${queue.songs[0].formattedDuration} Requested by: ${queue.songs[0].user.tag}\``
-        if(queue.songs[1]) string += `\n__Up Next:__\n ${queue.songs.map((song, id) => `\`${id}.\` [${song.name}](${song.url})\n \`${song.formattedDuration} Requested by: ${song.user.tag}\``).slice(1, 10).join("\n")}`
+        if(queue.songs[0]) string += `__Now Playing:__\n [${queue.songs[0].name}](${queue.songs[0].url})\n \`${queue.songs[0].formattedDuration} Requested by: ${queue.songs[0].user.tag}\``;
+        if(queue.songs[1]) string += `\n__Up Next:__\n ${queue.songs.map((song, id) => `\`${id}.\` [${song.name}](${song.url})\n \`${song.formattedDuration} Requested by: ${song.user.tag}\``).slice(1, 10).join("\n")}`;
         const embed = new Discord.MessageEmbed()
         .setTitle(`**Queue for ${message.guild}**`)
         .setDescription(string)
         .setColor('RANDOM')
         .addField("\u200B", `**${queue.songs.length} songs in queue | ${queue.formattedDuration} total length**`)
-        .setFooter('Page 1 / 1')
+        .setFooter('Page 1 / 1');
 
-        const pages = generateQueueEmbed(queue)
+        const pages = generateQueueEmbed(queue);
         function generateQueueEmbed(queue){
-            const pages = []
+            const pages = [];
             let k = 10;
             for(let i = 1; i < queue.songs.length; i += 11){
-                const current = queue.songs.slice(i, k)
+                const current = queue.songs.slice(i, k);
                 let j = i-1;
                 k += 10;
                 const info = current.map(song => `\`${++j}.\` [${song.name}](${song.url})\n \`${song.formattedDuration} Requested by: ${song.user.tag}\``).join('\n');
@@ -36,16 +36,16 @@ module.exports = {
                 .setTitle(`**Queue for ${message.guild}**`)
                 .setDescription(`__Now Playing:__\n[${queue.songs[0].name}](${queue.songs[0].url})\n \`${queue.songs[0].formattedDuration} Requested by: ${queue.songs[0].user.tag}\`\n__Up Next:__\n${info}`)
                 .setColor('RANDOM')
-                .addField("\u200B", `**${queue.songs.length} songs in queue | ${queue.formattedDuration} total length**`)
+                .addField("\u200B", `**${queue.songs.length} songs in queue | ${queue.formattedDuration} total length**`);
                 pages.push(embed);
             }
             return pages;
         }
         if(pages.length <= 1){
-            message.channel.send(embed)
+            message.channel.send(embed);
         } else{
-        const emoji = ["⏪", "⏩"]
+        const emoji = ["⏪", "⏩"];
         pagination(message, pages, emoji, 60000);
         }
     }
-}
+};

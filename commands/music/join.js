@@ -8,8 +8,8 @@ module.exports = {
         if(!message.member.voice.channel)
             return message.channel.send('❌ **Please join a voice channel!**');
         if(message.member.voice.channel){
-            message.member.voice.channel.join()
-            return message.channel.send(`👍 **Joined** \`${message.member.voice.channel.name}\` `)
+            client.distube.voices.join(message.member.voice.channel);
+            return message.channel.send(`👍 **Joined** \`${message.member.voice.channel.name}\` `);
         }
     }
-}
+};

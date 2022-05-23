@@ -6,10 +6,10 @@ module.exports = {
     description: "leave!",
     run: async (client, message, args) => {
         if (message.guild.me.voice.channel) {
-          message.guild.me.voice.channel.leave();
+          client.distube.voices.leave(message);
             message.channel.send("📭 **Successfully disconnected**");
           } else {
             message.channel.send('❌ **I am not connected to a voice channel.** \`Use .join to get me in\`');
           }
     }
-}
+};

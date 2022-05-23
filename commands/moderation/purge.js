@@ -35,4 +35,4 @@ module.exports = {
             .then (m => m.delete({timeout: 2000})))
             .catch (err => message.channel.send(`**${message.author.username}** Something went wrong... ${err}`));
     }
-}
+};
